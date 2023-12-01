@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using HolwnEcommerce.Data;
 using Serilog;
 using Volo.Abp;
+using Volo.Abp.Identity;
 
 namespace HolwnEcommerce.DbMigrator;
 
@@ -35,6 +36,11 @@ public class DbMigratorHostedService : IHostedService
                 .ServiceProvider
                 .GetRequiredService<HolwnEcommerceDbMigrationService>()
                 .MigrateAsync();
+            
+            await application
+                .ServiceProvider
+                .GetRequiredService<IdentityDataSeeder>()
+                .SeedAsync("ltienhoang2@gmail.com","Abc@123$");
 
             await application.ShutdownAsync();
 
