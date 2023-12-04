@@ -56,7 +56,7 @@ public class HolwnEcommerceAuthServerModule : AbpModule
         {
             builder.AddValidation(options =>
             {
-                options.AddAudiences("HolwnEcommerce");
+                options.AddAudiences("HolwnEcommerce", "HolwnEcommerce.Admin");
                 options.UseLocalServer();
                 options.UseAspNetCore();
             });
