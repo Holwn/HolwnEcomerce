@@ -4,6 +4,7 @@ import { LoginReqestDto } from "../models/login-request.dto";
 import { LoginResponseDto } from "../models/login-response.dto";
 import { environment } from "src/environments/environment";
 import { HttpClient } from "@angular/common/http";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants/key.const";
 
 
 @Injectable({
@@ -34,4 +35,12 @@ export class AuthService{
         );
     };
     
+    public isAuthenticated(): boolean{
+        return localStorage.getItem(ACCESS_TOKEN) != null;
+    }
+
+    public logout(){
+        localStorage.removeItem(ACCESS_TOKEN);
+        localStorage.removeItem(REFRESH_TOKEN);
+    }
 }
