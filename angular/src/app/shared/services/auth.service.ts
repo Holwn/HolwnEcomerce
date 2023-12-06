@@ -26,7 +26,7 @@ export class AuthService{
             scope: environment.oAuthConfig.scope
         }
 
-        const data = Object.keys(body).map((key,index)=>`${key}=${encodeURIComponent(body[key])}`).join('&');
+        const data = Object.keys(body).map((key,index) => `${key}=${encodeURIComponent(body[key])}`).join('&');
 
         return this.httClient.post<LoginResponseDto>(
             environment.oAuthConfig.issuer+'connect/token',

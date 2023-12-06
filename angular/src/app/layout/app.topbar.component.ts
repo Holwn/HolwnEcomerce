@@ -2,8 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import { LOGIN_URL } from '../shared/constants/urls.const';
-import { AuthService } from '@abp/ng.core';
 import { Route, Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
     selector: 'app-topbar',
