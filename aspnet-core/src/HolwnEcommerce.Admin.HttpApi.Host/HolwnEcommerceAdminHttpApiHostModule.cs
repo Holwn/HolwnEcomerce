@@ -32,7 +32,7 @@ using Volo.Abp.VirtualFileSystem;
 namespace HolwnEcommerce.Admin;
 
 [DependsOn(
-    typeof(HolwnEcommerceAdminHttpApiModule),
+    typeof(HolwnEcommerceHttpApiModule),
     typeof(AbpAutofacModule),
     typeof(AbpCachingStackExchangeRedisModule),
     typeof(AbpDistributedLockingModule),

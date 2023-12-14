@@ -23,6 +23,6 @@ public class HolwnEcommerceAdminApplicationContractsModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
-        HolwnEcommerceAdminDtoExtensions.Configure();
+        HolwnEcommerceDtoExtensions.Configure();
     }
 }

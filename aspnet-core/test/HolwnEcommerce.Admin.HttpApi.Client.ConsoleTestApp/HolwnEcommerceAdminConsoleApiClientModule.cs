@@ -10,7 +10,7 @@ namespace HolwnEcommerce.Admin.HttpApi.Client.ConsoleTestApp;
 
 [DependsOn(
     typeof(AbpAutofacModule),
-    typeof(HolwnEcommerceAdminHttpApiClientModule),
+    typeof(HolwnEcommerceHttpApiClientModule),
     typeof(AbpHttpClientIdentityModelModule)
     )]
 public class HolwnEcommerceAdminConsoleApiClientModule : AbpModule

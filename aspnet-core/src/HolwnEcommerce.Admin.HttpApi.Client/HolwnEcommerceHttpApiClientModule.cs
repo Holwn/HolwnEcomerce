@@ -19,7 +19,7 @@ namespace HolwnEcommerce.Admin;
     typeof(AbpFeatureManagementHttpApiClientModule),
     typeof(AbpSettingManagementHttpApiClientModule)
 )]
-public class HolwnEcommerceAdminHttpApiClientModule : AbpModule
+public class HolwnEcommerceHttpApiClientModule : AbpModule
 {
     public const string RemoteServiceName = "Default";
 
@@ -32,7 +32,7 @@ public class HolwnEcommerceAdminHttpApiClientModule : AbpModule
 
         Configure<AbpVirtualFileSystemOptions>(options =>
         {
-            options.FileSets.AddEmbedded<HolwnEcommerceAdminHttpApiClientModule>();
+            options.FileSets.AddEmbedded<HolwnEcommerceHttpApiClientModule>();
         });
     }
 }

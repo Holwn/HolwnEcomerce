@@ -20,7 +20,7 @@ namespace HolwnEcommerce.Admin;
     typeof(AbpFeatureManagementHttpApiModule),
     typeof(AbpSettingManagementHttpApiModule)
     )]
-public class HolwnEcommerceAdminHttpApiModule : AbpModule
+public class HolwnEcommerceHttpApiModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {

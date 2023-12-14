@@ -4,7 +4,7 @@ using Volo.Abp.Threading;
 
 namespace HolwnEcommerce.Admin;
 
-public static class HolwnEcommerceAdminDtoExtensions
+public static class HolwnEcommerceDtoExtensions
 {
     private static readonly OneTimeRunner OneTimeRunner = new OneTimeRunner();
 

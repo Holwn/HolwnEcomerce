@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HolwnEcommerce.Migrations
 {
-    public partial class CreateBussinessEntities : Migration
+    public partial class CreateBussinessEntity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "HolwnInventories",
+                name: "AppInventories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -26,11 +26,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnInventories", x => x.Id);
+                    table.PrimaryKey("PK_AppInventories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnInventoryTicketItems",
+                name: "AppInventoryTicketItems",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -43,11 +43,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnInventoryTicketItems", x => x.Id);
+                    table.PrimaryKey("PK_AppInventoryTicketItems", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnInventoryTickets",
+                name: "AppInventoryTickets",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -65,11 +65,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnInventoryTickets", x => x.Id);
+                    table.PrimaryKey("PK_AppInventoryTickets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnManufacturers",
+                name: "AppManufacturers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -87,11 +87,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnManufacturers", x => x.Id);
+                    table.PrimaryKey("PK_AppManufacturers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnOrderItems",
+                name: "AppOrderItems",
                 columns: table => new
                 {
                     OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -102,11 +102,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnOrderItems", x => new { x.ProductId, x.OrderId });
+                    table.PrimaryKey("PK_AppOrderItems", x => new { x.ProductId, x.OrderId });
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnOrders",
+                name: "AppOrders",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -135,11 +135,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnOrders", x => x.Id);
+                    table.PrimaryKey("PK_AppOrders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnOrderTransactions",
+                name: "AppOrderTransactions",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -153,11 +153,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnOrderTransactions", x => x.Id);
+                    table.PrimaryKey("PK_AppOrderTransactions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductAttributeDateTimes",
+                name: "AppProductAttributeDateTimes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -167,11 +167,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductAttributeDateTimes", x => x.Id);
+                    table.PrimaryKey("PK_AppProductAttributeDateTimes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductAttributeDecimals",
+                name: "AppProductAttributeDecimals",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -181,11 +181,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductAttributeDecimals", x => x.Id);
+                    table.PrimaryKey("PK_AppProductAttributeDecimals", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductAttributeInts",
+                name: "AppProductAttributeInts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -195,11 +195,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductAttributeInts", x => x.Id);
+                    table.PrimaryKey("PK_AppProductAttributeInts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductAttributes",
+                name: "AppProductAttributes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -219,11 +219,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductAttributes", x => x.Id);
+                    table.PrimaryKey("PK_AppProductAttributes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductAttributeTexts",
+                name: "AppProductAttributeTexts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -233,11 +233,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductAttributeTexts", x => x.Id);
+                    table.PrimaryKey("PK_AppProductAttributeTexts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductAttributeVarchars",
+                name: "AppProductAttributeVarchars",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -247,11 +247,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductAttributeVarchars", x => x.Id);
+                    table.PrimaryKey("PK_AppProductAttributeVarchars", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductCategories",
+                name: "AppProductCategories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -271,11 +271,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductCategories", x => x.Id);
+                    table.PrimaryKey("PK_AppProductCategories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductLinks",
+                name: "AppProductLinks",
                 columns: table => new
                 {
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -283,11 +283,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductLinks", x => new { x.ProductId, x.LinkedProductId });
+                    table.PrimaryKey("PK_AppProductLinks", x => new { x.ProductId, x.LinkedProductId });
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductReviews",
+                name: "AppProductReviews",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -303,11 +303,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductReviews", x => x.Id);
+                    table.PrimaryKey("PK_AppProductReviews", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProducts",
+                name: "AppProducts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -333,11 +333,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProducts", x => x.Id);
+                    table.PrimaryKey("PK_AppProducts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnProductTags",
+                name: "AppProductTags",
                 columns: table => new
                 {
                     ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -345,11 +345,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnProductTags", x => new { x.ProductId, x.TagId });
+                    table.PrimaryKey("PK_AppProductTags", x => new { x.ProductId, x.TagId });
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnPromotionCategories",
+                name: "AppPromotionCategories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -358,11 +358,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnPromotionCategories", x => x.Id);
+                    table.PrimaryKey("PK_AppPromotionCategories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnPromotionManufacturers",
+                name: "AppPromotionManufacturers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -371,11 +371,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnPromotionManufacturers", x => x.Id);
+                    table.PrimaryKey("PK_AppPromotionManufacturers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnPromotionProducts",
+                name: "AppPromotionProducts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -384,11 +384,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnPromotionProducts", x => x.Id);
+                    table.PrimaryKey("PK_AppPromotionProducts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnPromotions",
+                name: "AppPromotions",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -411,11 +411,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnPromotions", x => x.Id);
+                    table.PrimaryKey("PK_AppPromotions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnPromotionUsageHistories",
+                name: "AppPromotionUsageHistories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -424,11 +424,11 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnPromotionUsageHistories", x => x.Id);
+                    table.PrimaryKey("PK_AppPromotionUsageHistories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "HolwnTags",
+                name: "AppTags",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -436,83 +436,83 @@ namespace HolwnEcommerce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HolwnTags", x => x.Id);
+                    table.PrimaryKey("PK_AppTags", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "HolwnInventories");
+                name: "AppInventories");
 
             migrationBuilder.DropTable(
-                name: "HolwnInventoryTicketItems");
+                name: "AppInventoryTicketItems");
 
             migrationBuilder.DropTable(
-                name: "HolwnInventoryTickets");
+                name: "AppInventoryTickets");
 
             migrationBuilder.DropTable(
-                name: "HolwnManufacturers");
+                name: "AppManufacturers");
 
             migrationBuilder.DropTable(
-                name: "HolwnOrderItems");
+                name: "AppOrderItems");
 
             migrationBuilder.DropTable(
-                name: "HolwnOrders");
+                name: "AppOrders");
 
             migrationBuilder.DropTable(
-                name: "HolwnOrderTransactions");
+                name: "AppOrderTransactions");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductAttributeDateTimes");
+                name: "AppProductAttributeDateTimes");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductAttributeDecimals");
+                name: "AppProductAttributeDecimals");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductAttributeInts");
+                name: "AppProductAttributeInts");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductAttributes");
+                name: "AppProductAttributes");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductAttributeTexts");
+                name: "AppProductAttributeTexts");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductAttributeVarchars");
+                name: "AppProductAttributeVarchars");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductCategories");
+                name: "AppProductCategories");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductLinks");
+                name: "AppProductLinks");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductReviews");
+                name: "AppProductReviews");
 
             migrationBuilder.DropTable(
-                name: "HolwnProducts");
+                name: "AppProducts");
 
             migrationBuilder.DropTable(
-                name: "HolwnProductTags");
+                name: "AppProductTags");
 
             migrationBuilder.DropTable(
-                name: "HolwnPromotionCategories");
+                name: "AppPromotionCategories");
 
             migrationBuilder.DropTable(
-                name: "HolwnPromotionManufacturers");
+                name: "AppPromotionManufacturers");
 
             migrationBuilder.DropTable(
-                name: "HolwnPromotionProducts");
+                name: "AppPromotionProducts");
 
             migrationBuilder.DropTable(
-                name: "HolwnPromotions");
+                name: "AppPromotions");
 
             migrationBuilder.DropTable(
-                name: "HolwnPromotionUsageHistories");
+                name: "AppPromotionUsageHistories");
 
             migrationBuilder.DropTable(
-                name: "HolwnTags");
+                name: "AppTags");
         }
     }
 }

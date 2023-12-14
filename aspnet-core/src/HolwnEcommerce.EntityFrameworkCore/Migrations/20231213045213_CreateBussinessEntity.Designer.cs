@@ -13,8 +13,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace HolwnEcommerce.Migrations
 {
     [DbContext(typeof(HolwnEcommerceDbContext))]
-    [Migration("20231201063735_CreateBussinessEntities")]
-    partial class CreateBussinessEntities
+    [Migration("20231213045213_CreateBussinessEntity")]
+    partial class CreateBussinessEntity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -71,7 +71,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnInventories", (string)null);
+                    b.ToTable("AppInventories", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.InventoryTickets.InventoryTicket", b =>
@@ -125,7 +125,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnInventoryTickets", (string)null);
+                    b.ToTable("AppInventoryTickets", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.InventoryTickets.InventoryTicketItem", b =>
@@ -158,7 +158,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnInventoryTicketItems", (string)null);
+                    b.ToTable("AppInventoryTicketItems", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Manufacturers.Manufacturer", b =>
@@ -216,7 +216,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnManufacturers", (string)null);
+                    b.ToTable("AppManufacturers", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Orders.Order", b =>
@@ -314,7 +314,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnOrders", (string)null);
+                    b.ToTable("AppOrders", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Orders.OrderItem", b =>
@@ -339,7 +339,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("ProductId", "OrderId");
 
-                    b.ToTable("HolwnOrderItems", (string)null);
+                    b.ToTable("AppOrderItems", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Orders.OrderTransaction", b =>
@@ -375,7 +375,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnOrderTransactions", (string)null);
+                    b.ToTable("AppOrderTransactions", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.ProductAttributes.ProductAttribute", b =>
@@ -435,7 +435,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProductAttributes", (string)null);
+                    b.ToTable("AppProductAttributes", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.ProductCategories.ProductCategory", b =>
@@ -500,7 +500,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProductCategories", (string)null);
+                    b.ToTable("AppProductCategories", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.Product", b =>
@@ -588,7 +588,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProducts", (string)null);
+                    b.ToTable("AppProducts", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.ProductAttributeDateTime", b =>
@@ -607,7 +607,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProductAttributeDateTimes", (string)null);
+                    b.ToTable("AppProductAttributeDateTimes", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.ProductAttributeDecimal", b =>
@@ -626,7 +626,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProductAttributeDecimals", (string)null);
+                    b.ToTable("AppProductAttributeDecimals", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.ProductAttributeInt", b =>
@@ -645,7 +645,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProductAttributeInts", (string)null);
+                    b.ToTable("AppProductAttributeInts", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.ProductAttributeText", b =>
@@ -664,7 +664,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProductAttributeTexts", (string)null);
+                    b.ToTable("AppProductAttributeTexts", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.ProductAttributeVarchar", b =>
@@ -684,7 +684,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProductAttributeVarchars", (string)null);
+                    b.ToTable("AppProductAttributeVarchars", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.ProductLink", b =>
@@ -697,7 +697,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("ProductId", "LinkedProductId");
 
-                    b.ToTable("HolwnProductLinks", (string)null);
+                    b.ToTable("AppProductLinks", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.ProductReview", b =>
@@ -738,7 +738,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnProductReviews", (string)null);
+                    b.ToTable("AppProductReviews", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.ProductTag", b =>
@@ -751,7 +751,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("ProductId", "TagId");
 
-                    b.ToTable("HolwnProductTags", (string)null);
+                    b.ToTable("AppProductTags", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Products.Tag", b =>
@@ -767,7 +767,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnTags", (string)null);
+                    b.ToTable("AppTags", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Promotions.Promotion", b =>
@@ -838,7 +838,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnPromotions", (string)null);
+                    b.ToTable("AppPromotions", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Promotions.PromotionCategory", b =>
@@ -854,7 +854,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnPromotionCategories", (string)null);
+                    b.ToTable("AppPromotionCategories", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Promotions.PromotionManufacturer", b =>
@@ -870,7 +870,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnPromotionManufacturers", (string)null);
+                    b.ToTable("AppPromotionManufacturers", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Promotions.PromotionProduct", b =>
@@ -886,7 +886,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnPromotionProducts", (string)null);
+                    b.ToTable("AppPromotionProducts", (string)null);
                 });
 
             modelBuilder.Entity("HolwnEcommerce.Promotions.PromotionUsageHistory", b =>
@@ -902,7 +902,7 @@ namespace HolwnEcommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HolwnPromotionUsageHistories", (string)null);
+                    b.ToTable("AppPromotionUsageHistories", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
