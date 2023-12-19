@@ -1,8 +1,21 @@
 <p-panel header="Danh sách sản phẩm">
     <!--Filter (search panel)-->
     <div class="grid">
-        <div class="col-4">4</div>
-        <div class="col-8">8</div>
+        <div class="col-4">
+            <button pButton type="button" icon="pi pi-plus" iconPos="left" label="Thêm mới"></button>
+        </div>
+        <div class="col-8">
+            <div class="formgroup-inline">
+                <div class="field">
+                    <label for="txt-keyword" class="p-sr-only">Từ khóa</label>
+                    <input id="txt-keyword" pInputText type="text" placeholder="Gõ từ khóa">
+                </div>
+                <div class="field">
+                    <p-dropdown [options]="productcategories" [(ngModel)]="categoryId" placeholder="Chọn danh mục"></p-dropdown>
+                </div>
+                <button type="button" pButton icon="pi pi-search" iconPos="left" label="Tìm" (click)="loadData()"></button>
+            </div>
+        </div>
     </div>
     <!--Table-->
     <p-table #pnl [value]="items">
