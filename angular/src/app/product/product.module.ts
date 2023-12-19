@@ -9,6 +9,7 @@ import { BlockUIModule } from 'primeng/blockui';
 import { ButtonModule } from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [ProductComponent],
@@ -21,7 +22,8 @@ import {InputTextModule} from 'primeng/inputtext';
     BlockUIModule,
     ButtonModule,
     DropdownModule,
-    InputTextModule
+    InputTextModule,
+    ProgressSpinnerModule
   ],
 })
 export class ProductModule {}
