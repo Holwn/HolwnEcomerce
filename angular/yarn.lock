@@ -124,11 +124,6 @@
     bootstrap "^5.2.0"
     tslib "^2.0.0"
 
-"@abp/nx.generators@^7.4.3":
-  version "7.4.3"
-  resolved "https://registry.yarnpkg.com/@abp/nx.generators/-/nx.generators-7.4.3.tgz#9f204ac4c885924feba42437a46353729aea554a"
-  integrity sha512-hGdDGaJJloKdpJb8ZumnLl+6sHSSngtbfLuydlsycnlQD2OJAUUCmZMFwNvbpyGTTOCG+7T270mM/OgHdAb+Fg==
-
 "@abp/utils@~6.0.3":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@abp/utils/-/utils-6.0.3.tgz#b0bfcb5d03b8f068ed4817fb03a3681542c0109c"
