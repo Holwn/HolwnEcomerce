@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_ROUTE_PROVIDER } from './route.provider';
 import { AppLayoutModule } from './layout/app.layout.module';
+import { DialogService } from 'primeng/dynamicdialog';
+import {MessageService} from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -35,7 +37,7 @@ import { AppLayoutModule } from './layout/app.layout.module';
     // SideMenuLayoutModule.forRoot(),
   ],
   declarations: [AppComponent],
-  providers: [APP_ROUTE_PROVIDER],
+  providers: [APP_ROUTE_PROVIDER, DialogService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
