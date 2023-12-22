@@ -5,6 +5,7 @@ import { ProductDto, ProductInListDto, ProductsService } from '@proxy/products';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductDetailComponent } from './product-detail.component';
+import { NotificationService } from '../shared/services/notification.service';
 
 @Component({
   selector: 'app-product',
@@ -29,7 +30,8 @@ export class ProductComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductsService,
     private productCategoryService: ProductCategoriesService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnDestroy(): void {
@@ -90,6 +92,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     ref.onClose.subscribe((data: ProductDto)=>{
       if(data){
         this.loadData();
+        this.notificationService.showSuccess("Thêm sản phẩm thành công");
       }
     })
   }

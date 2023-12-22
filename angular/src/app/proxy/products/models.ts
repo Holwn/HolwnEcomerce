@@ -12,6 +12,7 @@ export interface CreateUpdateProductDto {
   sortOrder: number;
   visibility: boolean;
   isActive: boolean;
+  sellPrice: number;
   categoryId?: string;
   seoMetaDescription?: string;
   description?: string;
@@ -28,7 +29,10 @@ export interface ProductDto {
   sortOrder: number;
   visibility: boolean;
   isActive: boolean;
+  sellPrice: number;
   categoryId?: string;
+  seoMetaDescription?: string;
+  description?: string;
   thumbnailPicture?: string;
   id?: string;
 }
