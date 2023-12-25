@@ -1,9 +1,13 @@
 import { PagedResultDto } from '@abp/ng.core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ManufacturerInListDto, ManufacturersService } from '@proxy/manufacturers';
 import { ProductCategoriesService, ProductCategoryInListDto } from '@proxy/product-categories';
 import { ProductDto, ProductInListDto, ProductsService } from '@proxy/products';
-import { Subject, takeUntil } from 'rxjs';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Subject, forkJoin, takeUntil } from 'rxjs';
+import { UtilityService } from '../shared/services/utility.service';
+import { productTypeOptions } from '@proxy/holwn-ecommerce/products';
 
 @Component({
   selector: 'app-product-detail',
@@ -24,7 +28,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   constructor(
     private productService: ProductsService,
     private productCategoryService: ProductCategoriesService,
-    private fb: FormBuilder
+    private manufacturerService: ManufacturersService,
+    private fb: FormBuilder,
+    private config: DynamicDialogConfig,
+    private ref: DynamicDialogRef,
+    private utilService: UtilityService
   ) {}
 
   validationMessages = {
@@ -47,6 +55,46 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.buildForm();
+    this.loadProductTypes();
+
+    //Load data to form
+    var productcategories = this.productCategoryService.getListAll();
+    var manufactureres = this.manufacturerService.getListAll();
+    this.toggleBlockUI(true);
+    forkJoin({
+      productcategories,
+      manufactureres
+    }).pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe({
+      next:(response:any)=>{
+        //Push data to dropdown
+        var productCategories = response.productcategories as ProductCategoryInListDto[];
+        var manufactureres = response.manufactureres as ManufacturerInListDto[];
+        productCategories.forEach(element =>{
+          this.productcategories.push({
+            value: element.id,
+            label: element.name
+          })
+        });
+
+        manufactureres.forEach(element =>{
+          this.manufactureres.push({
+            value: element.id,
+            label: element.name
+          })
+        });
+
+        //Load edit data to form
+        if(this.utilService.isEmpty(this.config.data?.id)){
+          this.toggleBlockUI(false);
+        }else{
+          this.loadFormDetails(this.config.data?.id);
+        }
+      },
+      error:()=>{
+        this.toggleBlockUI(false);
+      }
+    })
   }
 
   loadFormDetails(id: string) {
@@ -66,15 +114,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       });
   }
 
-  loadProductCategories() {
-    this.productCategoryService.getListAll().subscribe((response: ProductCategoryInListDto[]) => {
-      response.forEach(element => {
-        this.productcategories.push({
-          value: element.id,
-          name: element.name,
-        });
+  loadProductTypes() {
+    productTypeOptions.forEach(element => {
+      this.productTypes.push({
+        value: element.value,
+        label: element.key
       });
     });
+  }
+
+  generateSlug(){
+    this.form.controls['slug'].setValue(this.utilService.MakeSeoTitle(this.form.get('name').value));
   }
 
   saveChange(){
@@ -109,8 +159,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       this.btnDisabled = true;
     } else {
       setTimeout(() => {
-      this.btnDisabled = false;
       this.blockedPanel = false;
+      this.btnDisabled = false;
       }, 1000);
     }
   }

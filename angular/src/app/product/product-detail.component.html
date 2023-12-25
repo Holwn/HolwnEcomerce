@@ -6,7 +6,7 @@
             <div class="field col-12">
                 <div class="field">
                     <label for="name" class="block">Tên <span class="required">*</span></label>
-                    <input id="name" pInputText type="text" class="w-full" formControlName="name"/>
+                    <input id="name" pInputText (keyup)="generateSlug()" type="text" class="w-full" formControlName="name"/>
                 </div>
             </div>
             <app-validation-message [entityForm]="form" fieldName="name" [validationMessages]="validationMessages"></app-validation-message>
@@ -68,7 +68,7 @@
                     <label for="productType" class="block">Loại sản phẩm <span class="required">*</span></label>
                     <p-dropdown 
                     [options]="productTypes" 
-                    formControlName="" 
+                    formControlName="productType" 
                     placeholder="Chọn loại" 
                     [showClear]="true"
                     autoWidth="false" [style]="{'width':'100%'}"
@@ -120,7 +120,7 @@
         </div>
     
         <ng-template pTemplate="footer">
-            <button type="submit" [disabled]="!form.invalid || btnDisabled" pButton icon="pi pi-save" iconPos="left" label="Lưu lại"></button>
+            <button type="submit" [disabled]="!form.valid || btnDisabled" pButton icon="pi pi-save" iconPos="left" label="Lưu lại"></button>
         </ng-template>
         
         <!--BlockUI-->
