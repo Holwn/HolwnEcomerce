@@ -1,0 +1,54 @@
+INSERT INTO [dbo].[AppManufacturers]
+           ([Id]
+           ,[Name]
+           ,[Code]
+           ,[Slug]
+           ,[CoverPicture]
+           ,[Visibility]
+           ,[IsActive]
+           ,[Country]
+           ,[ExtraProperties]
+           ,[ConcurrencyStamp]
+           ,[CreationTime]
+           ,[CreatorId])
+     VALUES
+           (NEWID()
+           ,N'Apple'
+           ,'M1'
+           ,'apple'
+           ,null
+           ,1
+           ,1
+           ,N'US'
+           ,null
+           ,null
+           ,getdate()
+           ,null)
+GO
+INSERT INTO [dbo].[AppManufacturers]
+           ([Id]
+           ,[Name]
+           ,[Code]
+           ,[Slug]
+           ,[CoverPicture]
+           ,[Visibility]
+           ,[IsActive]
+           ,[Country]
+           ,[ExtraProperties]
+           ,[ConcurrencyStamp]
+           ,[CreationTime]
+           ,[CreatorId])
+     VALUES
+           (NEWID()
+           ,N'Samsung'
+           ,'M2'
+           ,'samsung'
+           ,null
+           ,1
+           ,1
+           ,N'South Korea'
+           ,null
+           ,null
+           ,getdate()
+           ,null)
+GO

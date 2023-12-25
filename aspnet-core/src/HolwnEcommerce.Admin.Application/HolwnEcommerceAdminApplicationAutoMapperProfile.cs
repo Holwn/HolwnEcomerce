@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using HolwnEcommerce.Admin.Manufacturers;
 using HolwnEcommerce.Admin.ProductCategories;
 using HolwnEcommerce.Admin.Products;
+using HolwnEcommerce.Manufacturers;
 using HolwnEcommerce.ProductCategories;
 using HolwnEcommerce.Products;
 
@@ -19,5 +21,10 @@ public class HolwnEcommerceAdminApplicationAutoMapperProfile : Profile
         CreateMap<Product, ProductDto>();
         CreateMap<Product, ProductInListDto>();
         CreateMap<CreateUpdateProductDto, Product>();
+
+        //Manufacturer
+        CreateMap<Manufacturer, ManufacturerDto>();
+        CreateMap<Manufacturer, ManufacturerInListDto>();
+        CreateMap<CreateUpdateManufacturerDto, Manufacturer>();
     }
 }
