@@ -1,9 +1,8 @@
-import { PagedResultDto } from '@abp/ng.core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ManufacturerInListDto, ManufacturersService } from '@proxy/manufacturers';
 import { ProductCategoriesService, ProductCategoryInListDto } from '@proxy/product-categories';
-import { ProductDto, ProductInListDto, ProductsService } from '@proxy/products';
+import { ProductDto, ProductsService } from '@proxy/products';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Subject, forkJoin, takeUntil } from 'rxjs';
 import { UtilityService } from '../shared/services/utility.service';
@@ -36,65 +35,68 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ) {}
 
   validationMessages = {
-    code: [{ type:'required', message:'Bạn phải nhập mã duy nhất' }],
+    code: [{ type: 'required', message: 'Bạn phải nhập mã duy nhất' }],
     name: [
-      { type:'required', message:'Bạn phải nhập tên sản phẩm' },
-      { type:'minLength', message:'Bạn phải nhập ít nhất 1 kí tự' },
-      { type:'maxLength', message:'Bạn không được nhập quá 255 kí tự' }
+      { type: 'required', message: 'Bạn phải nhập tên sản phẩm' },
+      { type: 'minLength', message: 'Bạn phải nhập ít nhất 1 kí tự' },
+      { type: 'maxLength', message: 'Bạn không được nhập quá 255 kí tự' },
     ],
-    slug: [{ type:'required', message:'Bạn phải nhập URL duy nhất' }],
-    sku: [{ type:'required', message:'Bạn phải nhập mã SKU sản phẩm' }],
-    manufacturerId: [{ type:'required', message:'Bạn phải chọn nhà cung cấp' }],
-    categoryId: [{ type:'required', message:'Bạn phải chọn danh mục sản phẩm' }],
-    productType: [{ type:'required', message:'Bạn phải chọn loại sản phẩm' }],
-    sortOrder: [{ type:'required', message:'Bạn phải nhập thứ tự' }],
-    sellPrice: [{ type:'required', message:'Bạn phải nhập giá bán cho sản phẩm' }],
-  }
+    slug: [{ type: 'required', message: 'Bạn phải nhập URL duy nhất' }],
+    sku: [{ type: 'required', message: 'Bạn phải nhập mã SKU sản phẩm' }],
+    manufacturerId: [{ type: 'required', message: 'Bạn phải chọn nhà cung cấp' }],
+    categoryId: [{ type: 'required', message: 'Bạn phải chọn danh mục sản phẩm' }],
+    productType: [{ type: 'required', message: 'Bạn phải chọn loại sản phẩm' }],
+    sortOrder: [{ type: 'required', message: 'Bạn phải nhập thứ tự' }],
+    sellPrice: [{ type: 'required', message: 'Bạn phải nhập giá bán cho sản phẩm' }],
+  };
 
   ngOnDestroy(): void {}
 
   ngOnInit(): void {
     this.buildForm();
     this.loadProductTypes();
+    this.initFormData();
+  }
 
-    //Load data to form
+  initFormData() {
     var productcategories = this.productCategoryService.getListAll();
     var manufactureres = this.manufacturerService.getListAll();
     this.toggleBlockUI(true);
     forkJoin({
       productcategories,
-      manufactureres
-    }).pipe(takeUntil(this.ngUnsubscribe))
-    .subscribe({
-      next:(response:any)=>{
-        //Push data to dropdown
-        var productCategories = response.productcategories as ProductCategoryInListDto[];
-        var manufactureres = response.manufactureres as ManufacturerInListDto[];
-        productCategories.forEach(element =>{
-          this.productcategories.push({
-            value: element.id,
-            label: element.name
-          })
-        });
-
-        manufactureres.forEach(element =>{
-          this.manufactureres.push({
-            value: element.id,
-            label: element.name
-          })
-        });
-
-        //Load edit data to form
-        if(this.utilService.isEmpty(this.config.data?.id)){
-          this.toggleBlockUI(false);
-        }else{
-          this.loadFormDetails(this.config.data?.id);
-        }
-      },
-      error:()=>{
-        this.toggleBlockUI(false);
-      }
+      manufactureres,
     })
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe({
+        next: (response: any) => {
+          //Push data to dropdown
+          var productCategories = response.productcategories as ProductCategoryInListDto[];
+          var manufactureres = response.manufactureres as ManufacturerInListDto[];
+          productCategories.forEach(element => {
+            this.productcategories.push({
+              value: element.id,
+              label: element.name,
+            });
+          });
+
+          manufactureres.forEach(element => {
+            this.manufactureres.push({
+              value: element.id,
+              label: element.name,
+            });
+          });
+
+          //Load edit data to form
+          if (this.utilService.isEmpty(this.config.data?.id)) {
+            this.toggleBlockUI(false);
+          } else {
+            this.loadFormDetails(this.config.data?.id);
+          }
+        },
+        error: () => {
+          this.toggleBlockUI(false);
+        },
+      });
   }
 
   loadFormDetails(id: string) {
@@ -118,30 +120,65 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     productTypeOptions.forEach(element => {
       this.productTypes.push({
         value: element.value,
-        label: element.key
+        label: element.key,
       });
     });
   }
 
-  generateSlug(){
+  generateSlug() {
     this.form.controls['slug'].setValue(this.utilService.MakeSeoTitle(this.form.get('name').value));
   }
 
-  saveChange(){
-    
+  saveChange() {
+    this.toggleBlockUI(true);
+
+    if(this.utilService.isEmpty(this.config.data?.id))
+    {
+      this.productService
+      .create(this.form.value)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe({
+        next:()=>{
+          this.toggleBlockUI(false);
+          this.ref.close(this.form.value);
+        },
+        error:()=>{
+          this.toggleBlockUI(false);
+        }
+      })
+    }else{
+      this.productService
+      .update(this.config.data?.id, this.form.value)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe({
+        next:()=>{
+          this.toggleBlockUI(false);
+          this.ref.close(this.form.value);
+        },
+        error:()=>{
+          this.toggleBlockUI(false);
+        }
+      })
+    }
   }
 
   private buildForm() {
     this.form = this.fb.group({
-      name: new FormControl(this.selectedEntity.name || null, Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(250)
-      ])),
+      name: new FormControl(
+        this.selectedEntity.name || null,
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(250),
+        ])
+      ),
       code: new FormControl(this.selectedEntity.code || null, Validators.required),
       slug: new FormControl(this.selectedEntity.slug || null, Validators.required),
       sku: new FormControl(this.selectedEntity.sku || null, Validators.required),
-      manufacturerId: new FormControl(this.selectedEntity.manufacturerId || null, Validators.required),
+      manufacturerId: new FormControl(
+        this.selectedEntity.manufacturerId || null,
+        Validators.required
+      ),
       categoryId: new FormControl(this.selectedEntity.categoryId || null, Validators.required),
       productType: new FormControl(this.selectedEntity.productType || null, Validators.required),
       sortOrder: new FormControl(this.selectedEntity.sortOrder || null, Validators.required),
@@ -159,8 +196,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       this.btnDisabled = true;
     } else {
       setTimeout(() => {
-      this.blockedPanel = false;
-      this.btnDisabled = false;
+        this.blockedPanel = false;
+        this.btnDisabled = false;
       }, 1000);
     }
   }

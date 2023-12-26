@@ -17,6 +17,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {EditorModule} from 'primeng/editor';
 import { HolwnSharedModule } from '../shared/modules/holwn-shared.module';
+import {BadgeModule} from 'primeng/badge';
 
 @NgModule({
   declarations: [ProductComponent, ProductDetailComponent],
@@ -36,7 +37,8 @@ import { HolwnSharedModule } from '../shared/modules/holwn-shared.module';
     CheckboxModule,
     InputTextareaModule,
     EditorModule,
-    HolwnSharedModule
+    HolwnSharedModule,
+    BadgeModule
   ],
   entryComponents:[
     ProductDetailComponent
