@@ -19,5 +19,7 @@ namespace HolwnEcommerce.Products
         public string SeoMetaDescription { get; set; }
         public string Description { get; set; }
         public string ThumbnailPicture { get; set; }
+        public string CategoryName { get; set; }
+        public string CategorySlug { get; set; }
     }
 }

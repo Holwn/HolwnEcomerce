@@ -35,6 +35,8 @@ export interface ProductDto {
   description?: string;
   thumbnailPicture?: string;
   id?: string;
+  categoryName?: string;
+  categorySlug?: string;
 }
 
 export interface ProductInListDto extends EntityDto<string> {
@@ -49,6 +51,8 @@ export interface ProductInListDto extends EntityDto<string> {
   isActive: boolean;
   categoryId?: string;
   thumbnailPicture?: string;
+  categoryName?: string;
+  categorySlug?: string;
 }
 
 export interface ProductListFilterDto extends BaseListFilterDto {

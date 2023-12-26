@@ -19,7 +19,7 @@
         </div>
     </div>
     <!--Table-->
-    <p-table #pnl [value]="items" [(selection)]="selectedItems">
+    <p-table #pnl [value]="items" [(selection)]="selectedItems" selectionMode="multiple">
         <ng-template pTemplate="header">
             <tr>
                 <th style="width: 10px;">
@@ -36,16 +36,16 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-row>
-            <tr>
+            <tr [pSelectableRow]="row">
                 <td style="width: 10px;"><span class="ui-column-title"></span>
                     <p-tableCheckbox [value]="row"></p-tableCheckbox>
                 </td>
-                <td>{{row.code}}</td>
-                <td>{{row.sku}}</td>
-                <td>{{row.name}}</td>
-                <td>{{row.productType}}</td>
-                <td>{{row.categoryId}}</td>
-                <td>{{row.sortOrder}}</td>
+                <td>{{ row.code }}</td>
+                <td>{{ row.sku }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ getProductTypeName(row.productType) }}</td>
+                <td>{{ row.categoryId }}</td>
+                <td>{{ row.sortOrder }}</td>
                 <td>
                     <p-badge *ngIf="row.visibility" severity="success" value="Hiện thị"></p-badge>
                     <p-badge *ngIf="!row.visibility" severity="danger" value="Ẩn"></p-badge>

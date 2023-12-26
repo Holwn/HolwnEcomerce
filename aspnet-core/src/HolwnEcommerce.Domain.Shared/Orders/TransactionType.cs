@@ -2,9 +2,9 @@
 {
     public enum TransactionType
     {
-        ConfirmOrder,
-        StartProcessing,
-        FinishOrder,
-        CancelOrder
+        ConfirmOrder = 1,
+        StartProcessing = 2,
+        FinishOrder = 3,
+        CancelOrder = 4
     }
 }

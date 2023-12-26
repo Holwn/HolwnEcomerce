@@ -6,6 +6,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductDetailComponent } from './product-detail.component';
 import { NotificationService } from '../shared/services/notification.service';
+import { ProductType } from '@proxy/holwn-ecommerce/products';
 
 @Component({
   selector: 'app-product',
@@ -120,6 +121,10 @@ export class ProductComponent implements OnInit, OnDestroy {
         this.selectedItems = [];
       }
     })
+  }
+
+  getProductTypeName(value: number){
+    return ProductType[value];
   }
 
   private toggleBlockUI(enabled: boolean) {
