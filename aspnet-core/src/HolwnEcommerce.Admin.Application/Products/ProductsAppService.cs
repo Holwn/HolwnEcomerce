@@ -3,10 +3,12 @@ using HolwnEcommerce.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.BlobStoring;
 using Volo.Abp.Domain.Repositories;
 
 namespace HolwnEcommerce.Admin.Products
@@ -21,18 +23,28 @@ namespace HolwnEcommerce.Admin.Products
     {
         private readonly ProductManager _productManager;
         private readonly IRepository<ProductCategory> _productCategoryRepository;
-        public ProductsAppService(IRepository<Product, Guid> repository, ProductManager productManager, IRepository<ProductCategory> productCategoryRepository)
+        private readonly IBlobContainer<ProductThumbnailPictureContainer> _fileContainer;
+        public ProductsAppService(IRepository<Product, Guid> repository, 
+            ProductManager productManager, 
+            IRepository<ProductCategory> productCategoryRepository, 
+            IBlobContainer<ProductThumbnailPictureContainer> fileContainer)
             : base(repository)
         {
             _productManager = productManager;
             _productCategoryRepository = productCategoryRepository;
+            _fileContainer = fileContainer;
         }
 
         public override async Task<ProductDto> CreateAsync(CreateUpdateProductDto input)
         {
             var product = await _productManager.CreateAsync(input.ManufacturerId, input.Name, input.Code, input.Slug, input.ProductType, input.SKU,
-                input.SortOrder, input.Visibility, input.IsActive, input.CategoryId, input.SeoMetaDescription, input.Description, input.ThumbnailPicture, input.SellPrice);
+                input.SortOrder, input.Visibility, input.IsActive, input.CategoryId, input.SeoMetaDescription, input.Description, input.SellPrice);
+            if(input.ThumbnailPictureContent != null && input.ThumbnailPictureContent.Length > 0)
+            {
+                await SaveThumbnailImageAsync(input.ThumbnailPictureName, input.ThumbnailPictureContent);
+                product.ThumbnailPicture = input.ThumbnailPictureName;
 
+            }
             var result = await Repository.InsertAsync(product);
 
             return ObjectMapper.Map<Product, ProductDto>(result);
@@ -62,7 +74,11 @@ namespace HolwnEcommerce.Admin.Products
             }
             product.SeoMetaDescription = input.SeoMetaDescription;
             product.Description = input.Description;
-            product.ThumbnailPicture = input.ThumbnailPicture;
+            if (input.ThumbnailPictureContent != null && input.ThumbnailPictureContent.Length > 0)
+            {
+                await SaveThumbnailImageAsync(input.ThumbnailPictureName, input.ThumbnailPictureContent);
+                product.ThumbnailPicture = input.ThumbnailPictureName;
+            }
             product.SellPrice = input.SellPrice;
             await Repository.UpdateAsync(product);
 
@@ -94,6 +110,14 @@ namespace HolwnEcommerce.Admin.Products
             var data = await AsyncExecuter.ToListAsync(query.Skip(input.SkipCount).Take(input.MaxResultCount));
 
             return new PagedResultDto<ProductInListDto>(totalCount, ObjectMapper.Map<List<Product>, List<ProductInListDto>>(data));
+        }
+
+        private async Task SaveThumbnailImageAsync(string fileName, string base64)
+        {
+            Regex regex = new Regex(@"^[\w/\:.-]+;base64,");
+            base64 = regex.Replace(base64, string.Empty);
+            byte[] bytes = Convert.FromBase64String(base64);
+            await _fileContainer.SaveAsync(fileName, bytes, overrideExisting: true);
         }
     }
 }

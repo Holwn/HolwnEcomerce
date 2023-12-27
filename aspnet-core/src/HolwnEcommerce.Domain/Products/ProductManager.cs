@@ -24,8 +24,7 @@ namespace HolwnEcommerce.Products
             ProductType productType, string sKU,
             int sortOrder, bool visibility,
             bool isActive, Guid categoryId,
-            string seoMetaDescription, string description,
-            string thumbnailPicture, double sellPrice)
+            string seoMetaDescription, string description, double sellPrice)
         {
             if(await _productRepository.AnyAsync(x=>x.Name == name)) {
                 throw new UserFriendlyException("Tên sản phẩm đã tồn tại", HolwnEcommerceDomainErrorCodes.ProductNameAlreadyExists);
@@ -41,7 +40,7 @@ namespace HolwnEcommerce.Products
 
             return new Product(Guid.NewGuid(), manufacturerId, name, code, slug, productType,
                 sKU, sortOrder, visibility, isActive, categoryId,
-                seoMetaDescription, description, thumbnailPicture, sellPrice, category?.Name, category?.Slug);
+                seoMetaDescription, description, null, sellPrice, category?.Name, category?.Slug);
         }
     }
 }
