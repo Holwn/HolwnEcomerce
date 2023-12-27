@@ -5,6 +5,34 @@ namespace HolwnEcommerce.Products
 {
     public class Product : AuditedAggregateRoot<Guid>
     {
+        public Product() { }
+        public Product(Guid id, Guid manufacturerId,
+            string name, string code, string slug,
+            ProductType productType, string sKU,
+            int sortOrder, bool visibility,
+            bool isActive, Guid categoryId,
+            string seoMetaDescription, string description,
+            string thumbnailPicture, double sellPrice,
+            string categoryName, string categorySlug)
+        {
+            Id = id;
+            ManufacturerId = manufacturerId;
+            Name = name;
+            Code = code;
+            Slug = slug;
+            ProductType = productType;
+            SKU = sKU;
+            SortOrder = sortOrder;
+            Visibility = visibility;
+            IsActive = isActive;
+            CategoryId = categoryId;
+            SeoMetaDescription = seoMetaDescription;
+            Description = description;
+            ThumbnailPicture = thumbnailPicture;
+            SellPrice = sellPrice;
+            CategoryName = categoryName;
+            CategorySlug = categorySlug;
+        }
         public Guid ManufacturerId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
