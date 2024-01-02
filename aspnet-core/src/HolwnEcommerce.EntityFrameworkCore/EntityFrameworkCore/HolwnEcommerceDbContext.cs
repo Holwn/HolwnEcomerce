@@ -1,4 +1,6 @@
-﻿using HolwnEcommerce.Inventories;
+﻿using HolwnEcommerce.Configurations.IdentitySettings;
+using HolwnEcommerce.IdentitySettings;
+using HolwnEcommerce.Inventories;
 using HolwnEcommerce.InventoryTickets;
 using HolwnEcommerce.Manufacturers;
 using HolwnEcommerce.Orders;
@@ -83,6 +85,7 @@ public class HolwnEcommerceDbContext :
     public DbSet<PromotionManufacturer> PromotionManufacturers { get; set; }
     public DbSet<PromotionProduct> PromotionProducts { get; set; }
     public DbSet<PromotionUsageHistory> PromotionUsageHistories { get; set; }
+    public DbSet<IdentitySetting> IdentitySettings { get; set; }
 
     #endregion
 
@@ -133,6 +136,7 @@ public class HolwnEcommerceDbContext :
         builder.ApplyConfiguration(new PromotionManufacturerConfiguration());
         builder.ApplyConfiguration(new PromotionProductConfiguration());
         builder.ApplyConfiguration(new PromotionUsageHistoryConfiguration());
+        builder.ApplyConfiguration(new IdentitySettingConfiguration());
 
         //builder.Entity<YourEntity>(b =>
         //{
