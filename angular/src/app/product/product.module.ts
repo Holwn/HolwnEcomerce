@@ -19,6 +19,7 @@ import {EditorModule} from 'primeng/editor';
 import { HolwnSharedModule } from '../shared/modules/holwn-shared.module';
 import {BadgeModule} from 'primeng/badge';
 import {ImageModule} from 'primeng/image';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [ProductComponent, ProductDetailComponent],
@@ -40,7 +41,8 @@ import {ImageModule} from 'primeng/image';
     EditorModule,
     HolwnSharedModule,
     BadgeModule,
-    ImageModule
+    ImageModule,
+    ConfirmDialogModule
   ],
   entryComponents:[
     ProductDetailComponent

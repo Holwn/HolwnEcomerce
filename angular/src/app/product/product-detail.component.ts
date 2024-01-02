@@ -154,7 +154,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
           this.toggleBlockUI(false);
           this.ref.close(this.form.value);
         },
-        error:()=>{
+        error:(err)=>{
+          this.notificationService.showError(err.error.error.message);
           this.toggleBlockUI(false);
         }
       })
