@@ -1,4 +1,5 @@
 ﻿using HolwnEcommerce.ProductCategories;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using Volo.Abp.ObjectMapping;
 
 namespace HolwnEcommerce.Admin.ProductCategories
 {
+    [Authorize]
     public class ProductCategoriesAppService : CrudAppService
         <ProductCategory,
         ProductCategoryDto, 

@@ -1,5 +1,6 @@
 ﻿using HolwnEcommerce.ProductCategories;
 using HolwnEcommerce.Products;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace HolwnEcommerce.Admin.Products
 {
+    [Authorize]
     public class ProductsAppService : CrudAppService
         <Product,
         ProductDto,

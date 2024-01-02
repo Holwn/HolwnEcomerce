@@ -1,4 +1,5 @@
 ﻿using HolwnEcommerce.Manufacturers;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using Volo.Abp.ObjectMapping;
 
 namespace HolwnEcommerce.Admin.Manufacturers
 {
+    [Authorize]
     public class ManufacturersAppService : CrudAppService
         <Manufacturer,
         ManufacturerDto, 
