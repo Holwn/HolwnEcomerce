@@ -18,6 +18,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {EditorModule} from 'primeng/editor';
 import { HolwnSharedModule } from '../shared/modules/holwn-shared.module';
 import {BadgeModule} from 'primeng/badge';
+import {ImageModule} from 'primeng/image';
 
 @NgModule({
   declarations: [ProductComponent, ProductDetailComponent],
@@ -38,7 +39,8 @@ import {BadgeModule} from 'primeng/badge';
     InputTextareaModule,
     EditorModule,
     HolwnSharedModule,
-    BadgeModule
+    BadgeModule,
+    ImageModule
   ],
   entryComponents:[
     ProductDetailComponent

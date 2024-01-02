@@ -69,7 +69,7 @@
     "@abp/ng.theme.shared" "~6.0.3"
     tslib "^2.0.0"
 
-"@abp/ng.schematics@~6.0.0":
+"@abp/ng.schematics@~6.0.2":
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/@abp/ng.schematics/-/ng.schematics-6.0.3.tgz#d988fbe1bb3f1166da957778915f80e993020c35"
   integrity sha512-BUyXPeFK+HLJ9eFRik9lljOL0na/AKsedKwjyAfo1UiKnalYDvu2xdmaMmdQySkF0yIV//o6u6GgcZcDnyD2YQ==
