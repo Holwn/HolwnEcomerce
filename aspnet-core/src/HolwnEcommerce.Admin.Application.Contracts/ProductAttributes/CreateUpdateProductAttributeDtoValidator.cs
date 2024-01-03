@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HolwnEcommerce.Admin.ProductAttributes
 {
-    internal class CreateUpdateProductAttributeDtoValidator : AbstractValidator<CreateUpdateProductAttributeDto>
+    public class CreateUpdateProductAttributeDtoValidator : AbstractValidator<CreateUpdateProductAttributeDto>
     {
         public CreateUpdateProductAttributeDtoValidator() {
             RuleFor(x => x.Label).NotEmpty().MaximumLength(50);

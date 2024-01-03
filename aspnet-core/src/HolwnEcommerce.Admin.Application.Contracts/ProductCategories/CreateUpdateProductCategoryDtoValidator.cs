@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HolwnEcommerce.Admin.ProductCategories
 {
-    internal class CreateUpdateProductCategoryDtoValidator : AbstractValidator<CreateUpdateProductCategoryDto>
+    public class CreateUpdateProductCategoryDtoValidator : AbstractValidator<CreateUpdateProductCategoryDto>
     {
         public CreateUpdateProductCategoryDtoValidator() {
             RuleFor(x => x.Name).NotEmpty().MaximumLength(50);
