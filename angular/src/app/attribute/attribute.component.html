@@ -1,4 +1,4 @@
-<p-panel header="Danh sách sản phẩm">
+<p-panel header="Danh sách thuộc tính">
     <!--Filter (search panel)-->
     <div class="grid">
         <div class="col-4">
@@ -12,9 +12,6 @@
                     <label for="txt-keyword" class="p-sr-only">Từ khóa</label>
                     <input id="txt-keyword" (keypress)="loadData()" [(ngModel)]="keyword" pInputText type="text" placeholder="Gõ từ khóa">
                 </div>
-                <div class="field">
-                    <p-dropdown [options]="productcategories" [(ngModel)]="categoryId" placeholder="Chọn danh mục"></p-dropdown>
-                </div>
                 <button type="button" pButton icon="pi pi-search" iconPos="left" label="Tìm" (click)="loadData()"></button>
             </div>
         </div>
@@ -27,12 +24,12 @@
                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                 </th>
                 <th>Mã</th>
-                <th>SKU</th>
-                <th>Tên</th>
-                <th>Loại</th>
-                <th>Tên danh mục</th>
+                <th>Kiểu dữ liệu</th>
+                <th>Nhãn</th>
                 <th>Thứ tự</th>
                 <th>Hiện thị</th>
+                <th>Bắt buộc nhập</th>
+                <th>Duy nhất</th>
                 <th>Kích hoạt</th>
             </tr>
         </ng-template>
@@ -42,14 +39,20 @@
                     <p-tableCheckbox [value]="row"></p-tableCheckbox>
                 </td>
                 <td>{{ row.code }}</td>
-                <td>{{ row.sku }}</td>
-                <td>{{ row.name }}</td>
-                <td>{{ getProductTypeName(row.productType) }}</td>
-                <td>{{ row.categoryName }}</td>
+                <td>{{ getAttributeTypeName(row.dataType) }}</td>
+                <td>{{ row.label }}</td>
                 <td>{{ row.sortOrder }}</td>
                 <td>
                     <p-badge *ngIf="row.visibility" severity="success" value="Hiện thị"></p-badge>
                     <p-badge *ngIf="!row.visibility" severity="danger" value="Ẩn"></p-badge>
+                </td>
+                <td>
+                    <p-badge *ngIf="row.isRequired" severity="success" value="Có"></p-badge>
+                    <p-badge *ngIf="!row.isRequired" severity="danger" value="Không"></p-badge>
+                </td>
+                <td>
+                    <p-badge *ngIf="row.isUnique" severity="success" value="Có"></p-badge>
+                    <p-badge *ngIf="!row.isUnique" severity="danger" value="Không"></p-badge>
                 </td>
                 <td>
                     <p-badge *ngIf="row.isActive" severity="success" value="Kích hoạt"></p-badge>

@@ -10,13 +10,18 @@ const routes: Routes = [
     component: AppLayoutComponent
   },
   {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
-  },
-  {
     path: 'product',
     loadChildren: () => import('./product/product.module').then(m => m.ProductModule),
     component: AppLayoutComponent
+  },
+  {
+    path: 'attribute',
+    loadChildren: () => import('./attribute/attribute.module').then(m => m.AttributeModule),
+    component: AppLayoutComponent
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   // {
   //   path: 'account',

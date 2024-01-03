@@ -43,7 +43,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     code: [{ type: 'required', message: 'Bạn phải nhập mã duy nhất' }],
     name: [
       { type: 'required', message: 'Bạn phải nhập tên sản phẩm' },
-      { type: 'minLength', message: 'Bạn phải nhập ít nhất 1 kí tự' },
       { type: 'maxLength', message: 'Bạn không được nhập quá 255 kí tự' },
     ],
     slug: [{ type: 'required', message: 'Bạn phải nhập URL duy nhất' }],
@@ -195,7 +194,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this.selectedEntity.name || null,
         Validators.compose([
           Validators.required,
-          Validators.minLength(1),
           Validators.maxLength(250),
         ])
       ),
@@ -210,8 +208,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       productType: new FormControl(this.selectedEntity.productType || null, Validators.required),
       sortOrder: new FormControl(this.selectedEntity.sortOrder || null, Validators.required),
       sellPrice: new FormControl(this.selectedEntity.sellPrice || null, Validators.required),
-      visibility: new FormControl(this.selectedEntity.visibility || true),
-      isActive: new FormControl(this.selectedEntity.isActive || true),
+      visibility: new FormControl(this.selectedEntity.visibility || false),
+      isActive: new FormControl(this.selectedEntity.isActive || false),
       seoMetaDescription: new FormControl(this.selectedEntity.seoMetaDescription || null),
       description: new FormControl(this.selectedEntity.description || null),
       thumbnailPictureName: new FormControl(this.selectedEntity.thumbnailPicture || null),
