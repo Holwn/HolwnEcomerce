@@ -35,7 +35,7 @@
             <td>{{ loadDataTypeName(row.dataType) }}</td>
             <td>{{ getValueByType(row, row.dataType) }}</td>
             <td>
-                <button pButton type="button" (click)="removeItem(row)" label="Xóa"></button>
+                <button pButton pRipple type="button" class="p-button-text p-button-danger" (click)="removeItem(row)" icon="pi pi-times"></button>
             </td>
         </tr>
     </ng-template>

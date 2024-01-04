@@ -105,20 +105,18 @@ export class ProductAttributeComponent implements OnInit, OnDestroy {
     } else if(attribute.dataType == AttributeType.Varchar){
       id = attribute.varcharId;
     }
-    var ids = [];
-    ids.push(id);
     this.confirmationService.confirm({
       message: 'Bạn có chắc muốn xóa bản ghi này?',
       accept: () => {
-        this.deleteItemsConfirmed(ids);
+        this.deleteItemsConfirmed(attribute, id);
       },
     });
   }
 
-  deleteItemsConfirmed(ids: string[]) {
+  deleteItemsConfirmed(attribute: ProductAttributeValueDto, id: string) {
     this.toggleBlockUI(true);
     this.productService
-      .deleteMultiple(ids)
+      .removeProductAttribute(attribute.attributeId, id)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe({
         next: () => {

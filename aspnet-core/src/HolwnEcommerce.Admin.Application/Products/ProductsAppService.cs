@@ -308,11 +308,11 @@ namespace HolwnEcommerce.Admin.Products
                         from avarchar in aVarcharTable.DefaultIfEmpty()
                         join atext in attributeTextQuery on a.Id equals atext.AttributeId into aTextTable
                         from atext in aTextTable.DefaultIfEmpty()
-                        where (adate != null || adate.ProductId == productId)
-                        && (adecimal != null || adecimal.ProductId == productId)
-                        && (aint != null || aint.ProductId == productId)
-                        && (avarchar != null || avarchar.ProductId == productId)
-                        && (atext != null || atext.ProductId == productId)
+                        where (adate == null || adate.ProductId == productId)
+                        && (adecimal == null || adecimal.ProductId == productId)
+                        && (aint == null || aint.ProductId == productId)
+                        && (avarchar == null || avarchar.ProductId == productId)
+                        && (atext == null || atext.ProductId == productId)
                         select new ProductAttributeValueDto()
                         {
                             Label = a.Label,
@@ -331,6 +331,7 @@ namespace HolwnEcommerce.Admin.Products
                             VarcharId = avarchar != null ? avarchar.Id : null,
                             TextId = atext != null ? atext.Id : null,
                         };
+            query = query.Where(x => x.DateTimeId != null || x.DecimalId != null || x.IntId != null || x.VarcharId != null || x.TextId != null);
             return await AsyncExecuter.ToListAsync(query);
         }
 
@@ -355,11 +356,11 @@ namespace HolwnEcommerce.Admin.Products
                         from avarchar in aVarcharTable.DefaultIfEmpty()
                         join atext in attributeTextQuery on a.Id equals atext.AttributeId into aTextTable
                         from atext in aTextTable.DefaultIfEmpty()
-                        where (adate != null || adate.ProductId == input.ProductId)
-                        && (adecimal != null || adecimal.ProductId == input.ProductId)
-                        && (aint != null || aint.ProductId == input.ProductId)
-                        && (avarchar != null || avarchar.ProductId == input.ProductId)
-                        && (atext != null || atext.ProductId == input.ProductId)
+                        where (adate == null || adate.ProductId == input.ProductId)
+                        && (adecimal == null || adecimal.ProductId == input.ProductId)
+                        && (aint == null || aint.ProductId == input.ProductId)
+                        && (avarchar == null || avarchar.ProductId == input.ProductId)
+                        && (atext == null || atext.ProductId == input.ProductId)
                         select new ProductAttributeValueDto()
                         {
                             Label = a.Label,
@@ -367,17 +368,18 @@ namespace HolwnEcommerce.Admin.Products
                             DataType = a.DataType,
                             Code = a.Code,
                             ProductId = input.ProductId,
-                            DateTimeValue = adate.Value,
-                            DecimalValue = adecimal.Value,
-                            IntValue = aint.Value,
-                            VarcharValue = avarchar.Value,
-                            TextValue = atext.Value,
-                            DateTimeId = adate.Id,
-                            DecimalId = adecimal.Id,
-                            IntId = aint.Id,
-                            VarcharId = avarchar.Id,
-                            TextId = atext.Id,
+                            DateTimeValue = adate != null ? adate.Value : null,
+                            DecimalValue = adecimal != null ? adecimal.Value : null,
+                            IntValue = aint != null ? aint.Value : null,
+                            VarcharValue = avarchar != null ? avarchar.Value : null,
+                            TextValue = atext != null ? atext.Value : null,
+                            DateTimeId = adate != null ? adate.Id : null,
+                            DecimalId = adecimal != null ? adecimal.Id : null,
+                            IntId = aint != null ? aint.Id : null,
+                            VarcharId = avarchar != null ? avarchar.Id : null,
+                            TextId = atext != null ? atext.Id : null,
                         };
+            query = query.Where(x => x.DateTimeId != null || x.DecimalId != null || x.IntId != null || x.VarcharId != null || x.TextId != null);
             var totalCount = await AsyncExecuter.LongCountAsync(query);
             var data = await AsyncExecuter.ToListAsync(query.OrderByDescending(x => x.Label).Skip(input.SkipCount).Take(input.MaxResultCount));
             return new PagedResultDto<ProductAttributeValueDto>(totalCount, data);
