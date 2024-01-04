@@ -20,9 +20,10 @@ import { HolwnSharedModule } from '../shared/modules/holwn-shared.module';
 import {BadgeModule} from 'primeng/badge';
 import {ImageModule} from 'primeng/image';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ProductAttributeComponent } from './product-attribute.component';
 
 @NgModule({
-  declarations: [ProductComponent, ProductDetailComponent],
+  declarations: [ProductComponent, ProductDetailComponent, ProductAttributeComponent],
   imports: [
     SharedModule,
     ProductRoutingModule,
@@ -45,7 +46,8 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     ConfirmDialogModule
   ],
   entryComponents:[
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProductAttributeComponent
   ]
 })
 export class ProductModule {}
