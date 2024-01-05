@@ -2,13 +2,20 @@
     <div class="grid">
         <div class="col-3">
             <div class="field">
-                <p-dropdown [options]="attributes" placeholder="Chọn thuộc tính" [style]="{ width:'100%' }" [showClear]="true" formControlName="attributeId"></p-dropdown>
+                <p-dropdown [options]="attributes" placeholder="Chọn thuộc tính" 
+                [style]="{ width:'100%' }" [showClear]="true" formControlName="attributeId"
+                (onChange)="selectAttribute($event)"
+                ></p-dropdown>
             </div>
         </div>
 
         <div class="col-3">
             <div class="field">
-                <input id="attributeValue" pInputText type="text" formControlName="attributeValue" class="w-full"/>
+                <p-calendar formControlName="dateTimeValue" [hidden]="!showDateTimeControl"></p-calendar>
+                <p-inputNumber formControlName="decimalValue" mode="decimal" [hidden]="!showDecimalControl"></p-inputNumber>
+                <p-inputNumber formControlName="intValue" [hidden]="!showIntControl"></p-inputNumber>
+                <input pInputText type="text" formControlName="varcharValue" [hidden]="!showVarcharControl" class="w-full"/>
+                <input pInputText type="text" formControlName="textValue" [hidden]="!showTextControl" class="w-full"/>
             </div>
         </div>
 
