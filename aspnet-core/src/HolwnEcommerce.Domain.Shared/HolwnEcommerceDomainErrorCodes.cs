@@ -11,4 +11,6 @@ public static class HolwnEcommerceDomainErrorCodes
     public const string ProductAttributeIdIsNotExists = "HolwnEcommerce:ProductAttributeIdIsNotExists";
 
     public const string ProductAttributeValueIsNotValid = "HolwnEcommerce:ProductAttributeValueIsNotValid";
+
+    public const string RoleNameAlreadyExists = "HolwnEcommerce:RoleNameAlreadyExists";
 }
