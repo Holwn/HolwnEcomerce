@@ -3,8 +3,8 @@
     <div class="grid">
         <div class="col-4">
             <button pButton type="button" (click)="showAddModal()" icon="pi pi-plus" iconPos="left" label="Thêm"></button>
-            <button pButton type="button" (click)="showEditModal()" class="ml-1 p-button-help" *ngIf="selectedItems.length == 1" icon="pi pi-minus" iconPos="left" label="Sửa"></button>
-            <button pButton type="button" (click)="deleteItems()" class="ml-1 p-button-danger" *ngIf="selectedItems.length > 0" icon="pi pi-minus" iconPos="left" label="Xóa"></button>
+            <button pButton type="button" (click)="showEditModal()" class="ml-1 p-button-help" *ngIf="selectedItems.length == 1" icon="fa fa-edit" iconPos="left" label="Sửa"></button>
+            <button pButton type="button" (click)="deleteItems()" class="ml-1 p-button-danger" *ngIf="selectedItems.length > 0" icon="fa fa-trash" iconPos="left" label="Xóa"></button>
         </div>
         <div class="col-8">
             <div class="formgroup-inline">
