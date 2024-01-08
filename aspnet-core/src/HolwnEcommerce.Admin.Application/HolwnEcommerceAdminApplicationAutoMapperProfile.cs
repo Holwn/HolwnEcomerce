@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-using HolwnEcommerce.Admin.Manufacturers;
-using HolwnEcommerce.Admin.ProductAttributes;
-using HolwnEcommerce.Admin.ProductCategories;
-using HolwnEcommerce.Admin.Products;
-using HolwnEcommerce.Admin.Roles;
+using HolwnEcommerce.Admin.Catalog.Manufacturers;
+using HolwnEcommerce.Admin.Catalog.ProductAttributes;
+using HolwnEcommerce.Admin.Catalog.ProductCategories;
+using HolwnEcommerce.Admin.Catalog.Products;
+using HolwnEcommerce.Admin.System.Roles;
+using HolwnEcommerce.Admin.System.Users;
 using HolwnEcommerce.Manufacturers;
 using HolwnEcommerce.ProductAttributes;
 using HolwnEcommerce.ProductCategories;
@@ -48,5 +49,9 @@ public class HolwnEcommerceAdminApplicationAutoMapperProfile : Profile
             ? x.ExtraProperties[RoleConsts.DescriptionFieldName]
             : null));
         CreateMap<CreateUpdateRoleDto, IdentityRole>();
+
+        //User
+        CreateMap<IdentityUser, UserDto>();
+        CreateMap<IdentityUser, UserInListDto>();
     }
 }
