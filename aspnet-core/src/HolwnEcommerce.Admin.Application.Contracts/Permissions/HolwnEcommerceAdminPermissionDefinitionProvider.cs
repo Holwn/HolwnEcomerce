@@ -8,9 +8,21 @@ public class HolwnEcommerceAdminPermissionDefinitionProvider : PermissionDefinit
 {
     public override void Define(IPermissionDefinitionContext context)
     {
-        var myGroup = context.AddGroup(HolwnEcommerceAdminPermissions.GroupName);
-        //Define your own permissions here. Example:
-        //myGroup.AddPermission(HolwnEcommercePermissions.MyPermission1, L("Permission:MyPermission1"));
+        //Catalog
+        var catalogGroup = context.AddGroup(HolwnEcommerceAdminPermissions.CatalogGroupName);
+
+        //Add product
+        var productPermission = catalogGroup.AddPermission(HolwnEcommerceAdminPermissions.Product.Default, L("Permission:HolwnEcomAdminCatalog.Product"));
+        productPermission.AddChild(HolwnEcommerceAdminPermissions.Product.Create, L("Permission:HolwnEcomAdminCatalog.Product.Create"));
+        productPermission.AddChild(HolwnEcommerceAdminPermissions.Product.Update, L("Permission:HolwnEcomAdminCatalog.Product.Update"));
+        productPermission.AddChild(HolwnEcommerceAdminPermissions.Product.Delete, L("Permission:HolwnEcomAdminCatalog.Product.Delete"));
+        productPermission.AddChild(HolwnEcommerceAdminPermissions.Product.AttributeManage, L("Permission:HolwnEcomAdminCatalog.Product.AttributeManage"));
+
+        //Add attribute
+        var attributePermission = catalogGroup.AddPermission(HolwnEcommerceAdminPermissions.Attribute.Default, L("Permission:HolwnEcomAdminCatalog.Attribute"));
+        attributePermission.AddChild(HolwnEcommerceAdminPermissions.Attribute.Create, L("Permission:HolwnEcomAdminCatalog.Attribute.Create"));
+        attributePermission.AddChild(HolwnEcommerceAdminPermissions.Attribute.Update, L("Permission:HolwnEcomAdminCatalog.Attribute.Update"));
+        attributePermission.AddChild(HolwnEcommerceAdminPermissions.Attribute.Delete, L("Permission:HolwnEcomAdminCatalog.Attribute.Delete"));
     }
 
     private static LocalizableString L(string name)

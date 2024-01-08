@@ -1,8 +1,14 @@
 {
   "culture": "vi",
   "texts": {
-    "Menu:Home": "Trang chủ",
-    "Welcome": "Chào mừng bạn",
-    "LongWelcomeMessage": "Chào mừng bạn đến ứng dụng. Đây là một dự án khởi nghiệp dựa trên khung ABP. Để biết thêm thông tin, hãy truy cập abp.io."
+    "Permission:HolwnEcomAdminCatalog.Product": "Sản phẩm",
+    "Permission:HolwnEcomAdminCatalog.Product.Create": "Tạo mới sản phẩm",
+    "Permission:HolwnEcomAdminCatalog.Product.Update": "Cập nhật sản phẩm",
+    "Permission:HolwnEcomAdminCatalog.Product.Delete": "Xóa sản phẩm",
+    "Permission:HolwnEcomAdminCatalog.Product.AttributeManage": "Quản lý thuộc tính sản phẩm",
+    "Permission:HolwnEcomAdminCatalog.Attribute": "Thuộc tính",
+    "Permission:HolwnEcomAdminCatalog.Attribute.Create": "Tạo mới thuộc tính",
+    "Permission:HolwnEcomAdminCatalog.Attribute.Update": "Cập nhật thuộc tính",
+    "Permission:HolwnEcomAdminCatalog.Attribute.Delete": "Xóa thuộc tính"
   }
 }

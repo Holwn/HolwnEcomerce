@@ -1,8 +1,14 @@
 {
   "culture": "en",
   "texts": {
-    "Menu:Home": "Home",
-    "Welcome": "Welcome",
-    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io."
+    "Permission:HolwnEcomAdminCatalog.Product": "Product",
+    "Permission:HolwnEcomAdminCatalog.Product.Create": "Create product",
+    "Permission:HolwnEcomAdminCatalog.Product.Update": "Update product",
+    "Permission:HolwnEcomAdminCatalog.Product.Delete": "Delete product",
+    "Permission:HolwnEcomAdminCatalog.Product.AttributeManage": "Product attribute manage",
+    "Permission:HolwnEcomAdminCatalog.Attribute": "Attribute",
+    "Permission:HolwnEcomAdminCatalog.Attribute.Create": "Create thuộc tính",
+    "Permission:HolwnEcomAdminCatalog.Attribute.Update": "Update thuộc tính",
+    "Permission:HolwnEcomAdminCatalog.Attribute.Delete": "Delete thuộc tính"
   }
 }
