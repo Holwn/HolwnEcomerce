@@ -3,16 +3,250 @@
     "app"
   ],
   "modules": {
+    "account": {
+      "rootPath": "account",
+      "remoteServiceName": "AbpAccount",
+      "controllers": {
+        "Volo.Abp.Account.AccountController": {
+          "controllerName": "Account",
+          "controllerGroupName": "Account",
+          "isRemoteService": true,
+          "apiVersion": null,
+          "type": "Volo.Abp.Account.AccountController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.Account.IAccountAppService"
+            }
+          ],
+          "actions": {
+            "RegisterAsyncByInput": {
+              "uniqueName": "RegisterAsyncByInput",
+              "name": "RegisterAsync",
+              "httpMethod": "POST",
+              "url": "api/account/register",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Account.RegisterDto, Volo.Abp.Account.Application.Contracts",
+                  "type": "Volo.Abp.Account.RegisterDto",
+                  "typeSimple": "Volo.Abp.Account.RegisterDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "Volo.Abp.Account.RegisterDto",
+                  "typeSimple": "Volo.Abp.Account.RegisterDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Identity.IdentityUserDto",
+                "typeSimple": "Volo.Abp.Identity.IdentityUserDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Account.IAccountAppService"
+            },
+            "SendPasswordResetCodeAsyncByInput": {
+              "uniqueName": "SendPasswordResetCodeAsyncByInput",
+              "name": "SendPasswordResetCodeAsync",
+              "httpMethod": "POST",
+              "url": "api/account/send-password-reset-code",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Account.SendPasswordResetCodeDto, Volo.Abp.Account.Application.Contracts",
+                  "type": "Volo.Abp.Account.SendPasswordResetCodeDto",
+                  "typeSimple": "Volo.Abp.Account.SendPasswordResetCodeDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "Volo.Abp.Account.SendPasswordResetCodeDto",
+                  "typeSimple": "Volo.Abp.Account.SendPasswordResetCodeDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Account.IAccountAppService"
+            },
+            "ResetPasswordAsyncByInput": {
+              "uniqueName": "ResetPasswordAsyncByInput",
+              "name": "ResetPasswordAsync",
+              "httpMethod": "POST",
+              "url": "api/account/reset-password",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Account.ResetPasswordDto, Volo.Abp.Account.Application.Contracts",
+                  "type": "Volo.Abp.Account.ResetPasswordDto",
+                  "typeSimple": "Volo.Abp.Account.ResetPasswordDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "Volo.Abp.Account.ResetPasswordDto",
+                  "typeSimple": "Volo.Abp.Account.ResetPasswordDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Account.IAccountAppService"
+            }
+          }
+        },
+        "Volo.Abp.Account.ProfileController": {
+          "controllerName": "Profile",
+          "controllerGroupName": "Profile",
+          "isRemoteService": true,
+          "apiVersion": null,
+          "type": "Volo.Abp.Account.ProfileController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.Account.IProfileAppService"
+            }
+          ],
+          "actions": {
+            "GetAsync": {
+              "uniqueName": "GetAsync",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/account/my-profile",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "Volo.Abp.Account.ProfileDto",
+                "typeSimple": "Volo.Abp.Account.ProfileDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Account.IProfileAppService"
+            },
+            "UpdateAsyncByInput": {
+              "uniqueName": "UpdateAsyncByInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/account/my-profile",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Account.UpdateProfileDto, Volo.Abp.Account.Application.Contracts",
+                  "type": "Volo.Abp.Account.UpdateProfileDto",
+                  "typeSimple": "Volo.Abp.Account.UpdateProfileDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "Volo.Abp.Account.UpdateProfileDto",
+                  "typeSimple": "Volo.Abp.Account.UpdateProfileDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Account.ProfileDto",
+                "typeSimple": "Volo.Abp.Account.ProfileDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Account.IProfileAppService"
+            },
+            "ChangePasswordAsyncByInput": {
+              "uniqueName": "ChangePasswordAsyncByInput",
+              "name": "ChangePasswordAsync",
+              "httpMethod": "POST",
+              "url": "api/account/my-profile/change-password",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Account.ChangePasswordInput, Volo.Abp.Account.Application.Contracts",
+                  "type": "Volo.Abp.Account.ChangePasswordInput",
+                  "typeSimple": "Volo.Abp.Account.ChangePasswordInput",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "Volo.Abp.Account.ChangePasswordInput",
+                  "typeSimple": "Volo.Abp.Account.ChangePasswordInput",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Account.IProfileAppService"
+            }
+          }
+        }
+      }
+    },
     "app": {
       "rootPath": "app",
       "remoteServiceName": "Default",
       "controllers": {
-        "HolwnEcommerce.Admin.Roles.RolesAppService": {
-          "controllerName": "Roles",
-          "controllerGroupName": "Roles",
+        "HolwnEcommerce.Admin.System.Users.UsersAppService": {
+          "controllerName": "Users",
+          "controllerGroupName": "Users",
           "isRemoteService": true,
           "apiVersion": null,
-          "type": "HolwnEcommerce.Admin.Roles.RolesAppService",
+          "type": "HolwnEcommerce.Admin.System.Users.UsersAppService",
           "interfaces": [
             {
               "type": "Volo.Abp.Validation.IValidationEnabled"
@@ -24,7 +258,382 @@
               "type": "Volo.Abp.GlobalFeatures.IGlobalFeatureCheckingEnabled"
             },
             {
-              "type": "HolwnEcommerce.Admin.Roles.IRolesAppService"
+              "type": "HolwnEcommerce.Admin.System.Users.IUsersAppService"
+            }
+          ],
+          "actions": {
+            "DeleteMultipleAsyncByIds": {
+              "uniqueName": "DeleteMultipleAsyncByIds",
+              "name": "DeleteMultipleAsync",
+              "httpMethod": "DELETE",
+              "url": "api/app/users/multiple",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "ids",
+                  "typeAsString": "System.Collections.Generic.IEnumerable`1[[System.Guid, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib",
+                  "type": "System.Collections.Generic.IEnumerable<System.Guid>",
+                  "typeSimple": "[string]",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "ids",
+                  "name": "ids",
+                  "jsonName": null,
+                  "type": "System.Collections.Generic.IEnumerable<System.Guid>",
+                  "typeSimple": "[string]",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "HolwnEcommerce.Admin.System.Users.IUsersAppService"
+            },
+            "GetListAllAsyncByFilterKeyword": {
+              "uniqueName": "GetListAllAsyncByFilterKeyword",
+              "name": "GetListAllAsync",
+              "httpMethod": "GET",
+              "url": "api/app/users/all",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "filterKeyword",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "filterKeyword",
+                  "name": "filterKeyword",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.System.Users.UserInListDto>",
+                "typeSimple": "[HolwnEcommerce.Admin.System.Users.UserInListDto]"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "HolwnEcommerce.Admin.System.Users.IUsersAppService"
+            },
+            "GetListWithFilterAsyncByInput": {
+              "uniqueName": "GetListWithFilterAsyncByInput",
+              "name": "GetListWithFilterAsync",
+              "httpMethod": "GET",
+              "url": "api/app/users/with-filter",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "HolwnEcommerce.Admin.BaseListFilterDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.BaseListFilterDto",
+                  "typeSimple": "HolwnEcommerce.Admin.BaseListFilterDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "Keyword",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.System.Users.UserInListDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.System.Users.UserInListDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "HolwnEcommerce.Admin.System.Users.IUsersAppService"
+            },
+            "CreateAsyncByInput": {
+              "uniqueName": "CreateAsyncByInput",
+              "name": "CreateAsync",
+              "httpMethod": "POST",
+              "url": "api/app/users",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "HolwnEcommerce.Admin.System.Users.CreateUserDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.System.Users.CreateUserDto",
+                  "typeSimple": "HolwnEcommerce.Admin.System.Users.CreateUserDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "HolwnEcommerce.Admin.System.Users.CreateUserDto",
+                  "typeSimple": "HolwnEcommerce.Admin.System.Users.CreateUserDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "HolwnEcommerce.Admin.System.Users.UserDto",
+                "typeSimple": "HolwnEcommerce.Admin.System.Users.UserDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.System.Users.UserDto,HolwnEcommerce.Admin.System.Users.CreateUserDto>"
+            },
+            "UpdateAsyncByIdAndInput": {
+              "uniqueName": "UpdateAsyncByIdAndInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/app/users/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "HolwnEcommerce.Admin.System.Users.UpdateUserDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.System.Users.UpdateUserDto",
+                  "typeSimple": "HolwnEcommerce.Admin.System.Users.UpdateUserDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "HolwnEcommerce.Admin.System.Users.UpdateUserDto",
+                  "typeSimple": "HolwnEcommerce.Admin.System.Users.UpdateUserDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "HolwnEcommerce.Admin.System.Users.UserDto",
+                "typeSimple": "HolwnEcommerce.Admin.System.Users.UserDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.System.Users.UserDto,System.Guid,HolwnEcommerce.Admin.System.Users.UpdateUserDto>"
+            },
+            "GetAsyncById": {
+              "uniqueName": "GetAsyncById",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/app/users/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "HolwnEcommerce.Admin.System.Users.UserDto",
+                "typeSimple": "HolwnEcommerce.Admin.System.Users.UserDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.System.Users.UserDto,HolwnEcommerce.Admin.System.Users.UserDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+            },
+            "DeleteAsyncById": {
+              "uniqueName": "DeleteAsyncById",
+              "name": "DeleteAsync",
+              "httpMethod": "DELETE",
+              "url": "api/app/users/{id}",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "id",
+                  "typeAsString": "System.Guid, System.Private.CoreLib",
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "id",
+                  "name": "id",
+                  "jsonName": null,
+                  "type": "System.Guid",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": [],
+                  "bindingSourceId": "Path",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IDeleteAppService<System.Guid>"
+            },
+            "GetListAsyncByInput": {
+              "uniqueName": "GetListAsyncByInput",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/users",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.Application.Dtos.PagedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
+                  "type": "Volo.Abp.Application.Dtos.PagedResultRequestDto",
+                  "typeSimple": "Volo.Abp.Application.Dtos.PagedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "input",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "input"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.System.Users.UserDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.System.Users.UserDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.System.Users.UserDto,HolwnEcommerce.Admin.System.Users.UserDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+            }
+          }
+        },
+        "HolwnEcommerce.Admin.System.Roles.RolesAppService": {
+          "controllerName": "Roles",
+          "controllerGroupName": "Roles",
+          "isRemoteService": true,
+          "apiVersion": null,
+          "type": "HolwnEcommerce.Admin.System.Roles.RolesAppService",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.Validation.IValidationEnabled"
+            },
+            {
+              "type": "Volo.Abp.Auditing.IAuditingEnabled"
+            },
+            {
+              "type": "Volo.Abp.GlobalFeatures.IGlobalFeatureCheckingEnabled"
+            },
+            {
+              "type": "HolwnEcommerce.Admin.System.Roles.IRolesAppService"
             }
           ],
           "actions": {
@@ -63,7 +672,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Roles.IRolesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.System.Roles.IRolesAppService"
             },
             "GetListAllAsync": {
               "uniqueName": "GetListAllAsync",
@@ -74,11 +683,11 @@
               "parametersOnMethod": [],
               "parameters": [],
               "returnValue": {
-                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Roles.RoleInListDto>",
-                "typeSimple": "[HolwnEcommerce.Admin.Roles.RoleInListDto]"
+                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.System.Roles.RoleInListDto>",
+                "typeSimple": "[HolwnEcommerce.Admin.System.Roles.RoleInListDto]"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Roles.IRolesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.System.Roles.IRolesAppService"
             },
             "GetListFilterAsyncByInput": {
               "uniqueName": "GetListFilterAsyncByInput",
@@ -135,11 +744,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Roles.RoleInListDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Roles.RoleInListDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.System.Roles.RoleInListDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.System.Roles.RoleInListDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Roles.IRolesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.System.Roles.IRolesAppService"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -150,9 +759,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto",
+                  "typeAsString": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto",
+                  "typeSimple": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -162,8 +771,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto",
+                  "type": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto",
+                  "typeSimple": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -172,11 +781,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Roles.RoleDto",
-                "typeSimple": "HolwnEcommerce.Admin.Roles.RoleDto"
+                "type": "HolwnEcommerce.Admin.System.Roles.RoleDto",
+                "typeSimple": "HolwnEcommerce.Admin.System.Roles.RoleDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.Roles.RoleDto,HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.System.Roles.RoleDto,HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -195,9 +804,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto",
+                  "typeAsString": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto",
+                  "typeSimple": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -219,8 +828,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto",
+                  "type": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto",
+                  "typeSimple": "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -229,11 +838,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Roles.RoleDto",
-                "typeSimple": "HolwnEcommerce.Admin.Roles.RoleDto"
+                "type": "HolwnEcommerce.Admin.System.Roles.RoleDto",
+                "typeSimple": "HolwnEcommerce.Admin.System.Roles.RoleDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.Roles.RoleDto,System.Guid,HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.System.Roles.RoleDto,System.Guid,HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto>"
             },
             "GetPermissionsAsyncByProviderNameAndProviderKey": {
               "uniqueName": "GetPermissionsAsyncByProviderNameAndProviderKey",
@@ -290,7 +899,7 @@
                 "typeSimple": "Volo.Abp.PermissionManagement.GetPermissionListResultDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Roles.IRolesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.System.Roles.IRolesAppService"
             },
             "UpdatePermissionsAsyncByProviderNameAndProviderKeyAndInput": {
               "uniqueName": "UpdatePermissionsAsyncByProviderNameAndProviderKeyAndInput",
@@ -367,7 +976,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Roles.IRolesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.System.Roles.IRolesAppService"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -437,11 +1046,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Roles.RoleDto",
-                "typeSimple": "HolwnEcommerce.Admin.Roles.RoleDto"
+                "type": "HolwnEcommerce.Admin.System.Roles.RoleDto",
+                "typeSimple": "HolwnEcommerce.Admin.System.Roles.RoleDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Roles.RoleDto,HolwnEcommerce.Admin.Roles.RoleDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.System.Roles.RoleDto,HolwnEcommerce.Admin.System.Roles.RoleDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             },
             "GetListAsyncByInput": {
               "uniqueName": "GetListAsyncByInput",
@@ -486,20 +1095,20 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Roles.RoleDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Roles.RoleDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.System.Roles.RoleDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.System.Roles.RoleDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Roles.RoleDto,HolwnEcommerce.Admin.Roles.RoleDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.System.Roles.RoleDto,HolwnEcommerce.Admin.System.Roles.RoleDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             }
           }
         },
-        "HolwnEcommerce.Admin.Products.ProductsAppService": {
+        "HolwnEcommerce.Admin.Catalog.Products.ProductsAppService": {
           "controllerName": "Products",
           "controllerGroupName": "Products",
           "isRemoteService": true,
           "apiVersion": null,
-          "type": "HolwnEcommerce.Admin.Products.ProductsAppService",
+          "type": "HolwnEcommerce.Admin.Catalog.Products.ProductsAppService",
           "interfaces": [
             {
               "type": "Volo.Abp.Validation.IValidationEnabled"
@@ -511,7 +1120,7 @@
               "type": "Volo.Abp.GlobalFeatures.IGlobalFeatureCheckingEnabled"
             },
             {
-              "type": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "type": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             }
           ],
           "actions": {
@@ -524,9 +1133,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -536,8 +1145,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -546,11 +1155,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Products.ProductDto",
-                "typeSimple": "HolwnEcommerce.Admin.Products.ProductDto"
+                "type": "HolwnEcommerce.Admin.Catalog.Products.ProductDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.ProductDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.Products.ProductDto,HolwnEcommerce.Admin.Products.CreateUpdateProductDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.Catalog.Products.ProductDto,HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -569,9 +1178,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -593,8 +1202,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.CreateUpdateProductDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -603,11 +1212,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Products.ProductDto",
-                "typeSimple": "HolwnEcommerce.Admin.Products.ProductDto"
+                "type": "HolwnEcommerce.Admin.Catalog.Products.ProductDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.ProductDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.Products.ProductDto,System.Guid,HolwnEcommerce.Admin.Products.CreateUpdateProductDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.Catalog.Products.ProductDto,System.Guid,HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto>"
             },
             "DeleteMultipleAsyncByIds": {
               "uniqueName": "DeleteMultipleAsyncByIds",
@@ -644,7 +1253,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "GetListAllAsync": {
               "uniqueName": "GetListAllAsync",
@@ -655,11 +1264,11 @@
               "parametersOnMethod": [],
               "parameters": [],
               "returnValue": {
-                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Products.ProductInListDto>",
-                "typeSimple": "[HolwnEcommerce.Admin.Products.ProductInListDto]"
+                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Catalog.Products.ProductInListDto>",
+                "typeSimple": "[HolwnEcommerce.Admin.Catalog.Products.ProductInListDto]"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "GetListFilterAsyncByInput": {
               "uniqueName": "GetListFilterAsyncByInput",
@@ -670,9 +1279,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Products.ProductListFilterDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Products.ProductListFilterDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.ProductListFilterDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.Products.ProductListFilterDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.ProductListFilterDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.ProductListFilterDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -728,11 +1337,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Products.ProductInListDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Products.ProductInListDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Products.ProductInListDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Products.ProductInListDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "GetThumbnailImageAsyncByFileName": {
               "uniqueName": "GetThumbnailImageAsyncByFileName",
@@ -769,7 +1378,7 @@
                 "typeSimple": "string"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "GetSuggestNewCodeAsync": {
               "uniqueName": "GetSuggestNewCodeAsync",
@@ -784,7 +1393,7 @@
                 "typeSimple": "string"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "AddProductAttributeAsyncByInput": {
               "uniqueName": "AddProductAttributeAsyncByInput",
@@ -795,9 +1404,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -807,8 +1416,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -817,11 +1426,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto",
-                "typeSimple": "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto"
+                "type": "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "RemoveProductAttributeAsyncByAttributeIdAndId": {
               "uniqueName": "RemoveProductAttributeAsyncByAttributeIdAndId",
@@ -878,7 +1487,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "GetListProductAttributeAllAsyncByProductId": {
               "uniqueName": "GetListProductAttributeAllAsyncByProductId",
@@ -911,11 +1520,11 @@
                 }
               ],
               "returnValue": {
-                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto>",
-                "typeSimple": "[HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto]"
+                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto>",
+                "typeSimple": "[HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto]"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "GetListProductAttributesAsyncByInput": {
               "uniqueName": "GetListProductAttributesAsyncByInput",
@@ -926,9 +1535,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeListFilterDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeListFilterDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeListFilterDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeListFilterDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeListFilterDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeListFilterDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -984,11 +1593,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "UpdateProductAttributeAsyncByIdAndInput": {
               "uniqueName": "UpdateProductAttributeAsyncByIdAndInput",
@@ -1007,9 +1616,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1031,8 +1640,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1041,11 +1650,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto",
-                "typeSimple": "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto"
+                "type": "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Products.IProductsAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Products.IProductsAppService"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -1115,11 +1724,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Products.ProductDto",
-                "typeSimple": "HolwnEcommerce.Admin.Products.ProductDto"
+                "type": "HolwnEcommerce.Admin.Catalog.Products.ProductDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.Products.ProductDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Products.ProductDto,HolwnEcommerce.Admin.Products.ProductDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Catalog.Products.ProductDto,HolwnEcommerce.Admin.Catalog.Products.ProductDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             },
             "GetListAsyncByInput": {
               "uniqueName": "GetListAsyncByInput",
@@ -1164,20 +1773,20 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Products.ProductDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Products.ProductDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Products.ProductDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Products.ProductDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Products.ProductDto,HolwnEcommerce.Admin.Products.ProductDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Catalog.Products.ProductDto,HolwnEcommerce.Admin.Catalog.Products.ProductDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             }
           }
         },
-        "HolwnEcommerce.Admin.ProductCategories.ProductCategoriesAppService": {
+        "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoriesAppService": {
           "controllerName": "ProductCategories",
           "controllerGroupName": "ProductCategories",
           "isRemoteService": true,
           "apiVersion": null,
-          "type": "HolwnEcommerce.Admin.ProductCategories.ProductCategoriesAppService",
+          "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoriesAppService",
           "interfaces": [
             {
               "type": "Volo.Abp.Validation.IValidationEnabled"
@@ -1189,7 +1798,7 @@
               "type": "Volo.Abp.GlobalFeatures.IGlobalFeatureCheckingEnabled"
             },
             {
-              "type": "HolwnEcommerce.Admin.ProductCategories.IProductCategoriesAppService"
+              "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.IProductCategoriesAppService"
             }
           ],
           "actions": {
@@ -1228,7 +1837,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.ProductCategories.IProductCategoriesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.ProductCategories.IProductCategoriesAppService"
             },
             "GetListAllAsync": {
               "uniqueName": "GetListAllAsync",
@@ -1239,11 +1848,11 @@
               "parametersOnMethod": [],
               "parameters": [],
               "returnValue": {
-                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.ProductCategories.ProductCategoryInListDto>",
-                "typeSimple": "[HolwnEcommerce.Admin.ProductCategories.ProductCategoryInListDto]"
+                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryInListDto>",
+                "typeSimple": "[HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryInListDto]"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.ProductCategories.IProductCategoriesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.ProductCategories.IProductCategoriesAppService"
             },
             "GetListFilterAsyncByInput": {
               "uniqueName": "GetListFilterAsyncByInput",
@@ -1300,11 +1909,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.ProductCategories.ProductCategoryInListDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.ProductCategories.ProductCategoryInListDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryInListDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryInListDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.ProductCategories.IProductCategoriesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.ProductCategories.IProductCategoriesAppService"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -1315,9 +1924,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto",
-                  "typeSimple": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1327,8 +1936,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto",
-                  "typeSimple": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1337,11 +1946,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto",
-                "typeSimple": "HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto"
+                "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto,HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto,HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -1360,9 +1969,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto",
-                  "typeSimple": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1384,8 +1993,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto",
-                  "typeSimple": "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1394,11 +2003,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto",
-                "typeSimple": "HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto"
+                "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto,System.Guid,HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto,System.Guid,HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto>"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -1468,11 +2077,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto",
-                "typeSimple": "HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto"
+                "type": "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto,HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto,HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             },
             "GetListAsyncByInput": {
               "uniqueName": "GetListAsyncByInput",
@@ -1517,20 +2126,20 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto,HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto,HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             }
           }
         },
-        "HolwnEcommerce.Admin.ProductAttributes.ProductAttributesAppService": {
+        "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributesAppService": {
           "controllerName": "ProductAttributes",
           "controllerGroupName": "ProductAttributes",
           "isRemoteService": true,
           "apiVersion": null,
-          "type": "HolwnEcommerce.Admin.ProductAttributes.ProductAttributesAppService",
+          "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributesAppService",
           "interfaces": [
             {
               "type": "Volo.Abp.Validation.IValidationEnabled"
@@ -1542,7 +2151,7 @@
               "type": "Volo.Abp.GlobalFeatures.IGlobalFeatureCheckingEnabled"
             },
             {
-              "type": "HolwnEcommerce.Admin.ProductAttributes.IProductAttributesAppService"
+              "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.IProductAttributesAppService"
             }
           ],
           "actions": {
@@ -1581,7 +2190,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.ProductAttributes.IProductAttributesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.ProductAttributes.IProductAttributesAppService"
             },
             "GetListAllAsync": {
               "uniqueName": "GetListAllAsync",
@@ -1592,11 +2201,11 @@
               "parametersOnMethod": [],
               "parameters": [],
               "returnValue": {
-                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeInListDto>",
-                "typeSimple": "[HolwnEcommerce.Admin.ProductAttributes.ProductAttributeInListDto]"
+                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeInListDto>",
+                "typeSimple": "[HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeInListDto]"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.ProductAttributes.IProductAttributesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.ProductAttributes.IProductAttributesAppService"
             },
             "GetListFilterAsyncByInput": {
               "uniqueName": "GetListFilterAsyncByInput",
@@ -1653,11 +2262,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeInListDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeInListDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeInListDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeInListDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.ProductAttributes.IProductAttributesAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.ProductAttributes.IProductAttributesAppService"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -1668,9 +2277,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto",
-                  "typeSimple": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1680,8 +2289,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto",
-                  "typeSimple": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1690,11 +2299,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto",
-                "typeSimple": "HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto"
+                "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto,HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto,HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -1713,9 +2322,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto",
-                  "typeSimple": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1737,8 +2346,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto",
-                  "typeSimple": "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1747,11 +2356,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto",
-                "typeSimple": "HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto"
+                "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto,System.Guid,HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto,System.Guid,HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto>"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -1821,11 +2430,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto",
-                "typeSimple": "HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto"
+                "type": "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto,HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto,HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             },
             "GetListAsyncByInput": {
               "uniqueName": "GetListAsyncByInput",
@@ -1870,20 +2479,20 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto,HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto,HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             }
           }
         },
-        "HolwnEcommerce.Admin.Manufacturers.ManufacturersAppService": {
+        "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturersAppService": {
           "controllerName": "Manufacturers",
           "controllerGroupName": "Manufacturers",
           "isRemoteService": true,
           "apiVersion": null,
-          "type": "HolwnEcommerce.Admin.Manufacturers.ManufacturersAppService",
+          "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturersAppService",
           "interfaces": [
             {
               "type": "Volo.Abp.Validation.IValidationEnabled"
@@ -1895,7 +2504,7 @@
               "type": "Volo.Abp.GlobalFeatures.IGlobalFeatureCheckingEnabled"
             },
             {
-              "type": "HolwnEcommerce.Admin.Manufacturers.IManufacturersAppService"
+              "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.IManufacturersAppService"
             }
           ],
           "actions": {
@@ -1934,7 +2543,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Manufacturers.IManufacturersAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Manufacturers.IManufacturersAppService"
             },
             "GetListAllAsync": {
               "uniqueName": "GetListAllAsync",
@@ -1945,11 +2554,11 @@
               "parametersOnMethod": [],
               "parameters": [],
               "returnValue": {
-                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Manufacturers.ManufacturerInListDto>",
-                "typeSimple": "[HolwnEcommerce.Admin.Manufacturers.ManufacturerInListDto]"
+                "type": "System.Collections.Generic.List<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerInListDto>",
+                "typeSimple": "[HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerInListDto]"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Manufacturers.IManufacturersAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Manufacturers.IManufacturersAppService"
             },
             "GetListFilterAsyncByInput": {
               "uniqueName": "GetListFilterAsyncByInput",
@@ -2006,11 +2615,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Manufacturers.ManufacturerInListDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Manufacturers.ManufacturerInListDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerInListDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerInListDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "HolwnEcommerce.Admin.Manufacturers.IManufacturersAppService"
+              "implementFrom": "HolwnEcommerce.Admin.Catalog.Manufacturers.IManufacturersAppService"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -2021,9 +2630,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -2033,8 +2642,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -2043,11 +2652,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Manufacturers.ManufacturerDto",
-                "typeSimple": "HolwnEcommerce.Admin.Manufacturers.ManufacturerDto"
+                "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.Manufacturers.ManufacturerDto,HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto,HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -2066,9 +2675,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto, HolwnEcommerce.Admin.Application.Contracts",
-                  "type": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto",
+                  "typeAsString": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto, HolwnEcommerce.Admin.Application.Contracts",
+                  "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -2090,8 +2699,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto",
-                  "typeSimple": "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto",
+                  "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto",
+                  "typeSimple": "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -2100,11 +2709,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Manufacturers.ManufacturerDto",
-                "typeSimple": "HolwnEcommerce.Admin.Manufacturers.ManufacturerDto"
+                "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.Manufacturers.ManufacturerDto,System.Guid,HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto,System.Guid,HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto>"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -2174,11 +2783,11 @@
                 }
               ],
               "returnValue": {
-                "type": "HolwnEcommerce.Admin.Manufacturers.ManufacturerDto",
-                "typeSimple": "HolwnEcommerce.Admin.Manufacturers.ManufacturerDto"
+                "type": "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto",
+                "typeSimple": "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Manufacturers.ManufacturerDto,HolwnEcommerce.Admin.Manufacturers.ManufacturerDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto,HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
             },
             "GetListAsyncByInput": {
               "uniqueName": "GetListAsyncByInput",
@@ -2223,11 +2832,319 @@
                 }
               ],
               "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Manufacturers.ManufacturerDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Manufacturers.ManufacturerDto>"
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto>"
               },
               "allowAnonymous": false,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Manufacturers.ManufacturerDto,HolwnEcommerce.Admin.Manufacturers.ManufacturerDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto,HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto,System.Guid,Volo.Abp.Application.Dtos.PagedResultRequestDto>"
+            }
+          }
+        }
+      }
+    },
+    "featureManagement": {
+      "rootPath": "featureManagement",
+      "remoteServiceName": "AbpFeatureManagement",
+      "controllers": {
+        "Volo.Abp.FeatureManagement.FeaturesController": {
+          "controllerName": "Features",
+          "controllerGroupName": "Features",
+          "isRemoteService": true,
+          "apiVersion": null,
+          "type": "Volo.Abp.FeatureManagement.FeaturesController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.FeatureManagement.IFeatureAppService"
+            }
+          ],
+          "actions": {
+            "GetAsyncByProviderNameAndProviderKey": {
+              "uniqueName": "GetAsyncByProviderNameAndProviderKey",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/feature-management/features",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "providerName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "providerKey",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "providerName",
+                  "name": "providerName",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "providerKey",
+                  "name": "providerKey",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.FeatureManagement.GetFeatureListResultDto",
+                "typeSimple": "Volo.Abp.FeatureManagement.GetFeatureListResultDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.FeatureManagement.IFeatureAppService"
+            },
+            "UpdateAsyncByProviderNameAndProviderKeyAndInput": {
+              "uniqueName": "UpdateAsyncByProviderNameAndProviderKeyAndInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/feature-management/features",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "providerName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "providerKey",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.FeatureManagement.UpdateFeaturesDto, Volo.Abp.FeatureManagement.Application.Contracts",
+                  "type": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
+                  "typeSimple": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "providerName",
+                  "name": "providerName",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "providerKey",
+                  "name": "providerKey",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
+                  "typeSimple": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.FeatureManagement.IFeatureAppService"
+            }
+          }
+        }
+      }
+    },
+    "permissionManagement": {
+      "rootPath": "permissionManagement",
+      "remoteServiceName": "AbpPermissionManagement",
+      "controllers": {
+        "Volo.Abp.PermissionManagement.PermissionsController": {
+          "controllerName": "Permissions",
+          "controllerGroupName": "Permissions",
+          "isRemoteService": true,
+          "apiVersion": null,
+          "type": "Volo.Abp.PermissionManagement.PermissionsController",
+          "interfaces": [
+            {
+              "type": "Volo.Abp.PermissionManagement.IPermissionAppService"
+            }
+          ],
+          "actions": {
+            "GetAsyncByProviderNameAndProviderKey": {
+              "uniqueName": "GetAsyncByProviderNameAndProviderKey",
+              "name": "GetAsync",
+              "httpMethod": "GET",
+              "url": "api/permission-management/permissions",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "providerName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "providerKey",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "providerName",
+                  "name": "providerName",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "providerKey",
+                  "name": "providerKey",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.PermissionManagement.GetPermissionListResultDto",
+                "typeSimple": "Volo.Abp.PermissionManagement.GetPermissionListResultDto"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.PermissionManagement.IPermissionAppService"
+            },
+            "UpdateAsyncByProviderNameAndProviderKeyAndInput": {
+              "uniqueName": "UpdateAsyncByProviderNameAndProviderKeyAndInput",
+              "name": "UpdateAsync",
+              "httpMethod": "PUT",
+              "url": "api/permission-management/permissions",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "providerName",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "providerKey",
+                  "typeAsString": "System.String, System.Private.CoreLib",
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null
+                },
+                {
+                  "name": "input",
+                  "typeAsString": "Volo.Abp.PermissionManagement.UpdatePermissionsDto, Volo.Abp.PermissionManagement.Application.Contracts",
+                  "type": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "typeSimple": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "providerName",
+                  "name": "providerName",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "providerKey",
+                  "name": "providerKey",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": ""
+                },
+                {
+                  "nameOnMethod": "input",
+                  "name": "input",
+                  "jsonName": null,
+                  "type": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "typeSimple": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.PermissionManagement.IPermissionAppService"
             }
           }
         }
@@ -2625,115 +3542,6 @@
         }
       }
     },
-    "settingManagement": {
-      "rootPath": "settingManagement",
-      "remoteServiceName": "SettingManagement",
-      "controllers": {
-        "Volo.Abp.SettingManagement.EmailSettingsController": {
-          "controllerName": "EmailSettings",
-          "controllerGroupName": "EmailSettings",
-          "isRemoteService": true,
-          "apiVersion": null,
-          "type": "Volo.Abp.SettingManagement.EmailSettingsController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.SettingManagement.IEmailSettingsAppService"
-            }
-          ],
-          "actions": {
-            "GetAsync": {
-              "uniqueName": "GetAsync",
-              "name": "GetAsync",
-              "httpMethod": "GET",
-              "url": "api/setting-management/emailing",
-              "supportedVersions": [],
-              "parametersOnMethod": [],
-              "parameters": [],
-              "returnValue": {
-                "type": "Volo.Abp.SettingManagement.EmailSettingsDto",
-                "typeSimple": "Volo.Abp.SettingManagement.EmailSettingsDto"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.SettingManagement.IEmailSettingsAppService"
-            },
-            "UpdateAsyncByInput": {
-              "uniqueName": "UpdateAsyncByInput",
-              "name": "UpdateAsync",
-              "httpMethod": "POST",
-              "url": "api/setting-management/emailing",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto, Volo.Abp.SettingManagement.Application.Contracts",
-                  "type": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto",
-                  "typeSimple": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto",
-                  "typeSimple": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.SettingManagement.IEmailSettingsAppService"
-            },
-            "SendTestEmailAsyncByInput": {
-              "uniqueName": "SendTestEmailAsyncByInput",
-              "name": "SendTestEmailAsync",
-              "httpMethod": "POST",
-              "url": "api/setting-management/emailing/send-test-email",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.SettingManagement.SendTestEmailInput, Volo.Abp.SettingManagement.Application.Contracts",
-                  "type": "Volo.Abp.SettingManagement.SendTestEmailInput",
-                  "typeSimple": "Volo.Abp.SettingManagement.SendTestEmailInput",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "Volo.Abp.SettingManagement.SendTestEmailInput",
-                  "typeSimple": "Volo.Abp.SettingManagement.SendTestEmailInput",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.SettingManagement.IEmailSettingsAppService"
-            }
-          }
-        }
-      }
-    },
     "abp": {
       "rootPath": "abp",
       "remoteServiceName": "abp",
@@ -2904,298 +3712,19 @@
         }
       }
     },
-    "featureManagement": {
-      "rootPath": "featureManagement",
-      "remoteServiceName": "AbpFeatureManagement",
+    "settingManagement": {
+      "rootPath": "settingManagement",
+      "remoteServiceName": "SettingManagement",
       "controllers": {
-        "Volo.Abp.FeatureManagement.FeaturesController": {
-          "controllerName": "Features",
-          "controllerGroupName": "Features",
+        "Volo.Abp.SettingManagement.EmailSettingsController": {
+          "controllerName": "EmailSettings",
+          "controllerGroupName": "EmailSettings",
           "isRemoteService": true,
           "apiVersion": null,
-          "type": "Volo.Abp.FeatureManagement.FeaturesController",
+          "type": "Volo.Abp.SettingManagement.EmailSettingsController",
           "interfaces": [
             {
-              "type": "Volo.Abp.FeatureManagement.IFeatureAppService"
-            }
-          ],
-          "actions": {
-            "GetAsyncByProviderNameAndProviderKey": {
-              "uniqueName": "GetAsyncByProviderNameAndProviderKey",
-              "name": "GetAsync",
-              "httpMethod": "GET",
-              "url": "api/feature-management/features",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "providerName",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "providerKey",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "providerName",
-                  "name": "providerName",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "providerKey",
-                  "name": "providerKey",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.FeatureManagement.GetFeatureListResultDto",
-                "typeSimple": "Volo.Abp.FeatureManagement.GetFeatureListResultDto"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.FeatureManagement.IFeatureAppService"
-            },
-            "UpdateAsyncByProviderNameAndProviderKeyAndInput": {
-              "uniqueName": "UpdateAsyncByProviderNameAndProviderKeyAndInput",
-              "name": "UpdateAsync",
-              "httpMethod": "PUT",
-              "url": "api/feature-management/features",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "providerName",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "providerKey",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.FeatureManagement.UpdateFeaturesDto, Volo.Abp.FeatureManagement.Application.Contracts",
-                  "type": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
-                  "typeSimple": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "providerName",
-                  "name": "providerName",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "providerKey",
-                  "name": "providerKey",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
-                  "typeSimple": "Volo.Abp.FeatureManagement.UpdateFeaturesDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.FeatureManagement.IFeatureAppService"
-            }
-          }
-        }
-      }
-    },
-    "account": {
-      "rootPath": "account",
-      "remoteServiceName": "AbpAccount",
-      "controllers": {
-        "Volo.Abp.Account.AccountController": {
-          "controllerName": "Account",
-          "controllerGroupName": "Account",
-          "isRemoteService": true,
-          "apiVersion": null,
-          "type": "Volo.Abp.Account.AccountController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.Account.IAccountAppService"
-            }
-          ],
-          "actions": {
-            "RegisterAsyncByInput": {
-              "uniqueName": "RegisterAsyncByInput",
-              "name": "RegisterAsync",
-              "httpMethod": "POST",
-              "url": "api/account/register",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Account.RegisterDto, Volo.Abp.Account.Application.Contracts",
-                  "type": "Volo.Abp.Account.RegisterDto",
-                  "typeSimple": "Volo.Abp.Account.RegisterDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "Volo.Abp.Account.RegisterDto",
-                  "typeSimple": "Volo.Abp.Account.RegisterDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Identity.IdentityUserDto",
-                "typeSimple": "Volo.Abp.Identity.IdentityUserDto"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Account.IAccountAppService"
-            },
-            "SendPasswordResetCodeAsyncByInput": {
-              "uniqueName": "SendPasswordResetCodeAsyncByInput",
-              "name": "SendPasswordResetCodeAsync",
-              "httpMethod": "POST",
-              "url": "api/account/send-password-reset-code",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Account.SendPasswordResetCodeDto, Volo.Abp.Account.Application.Contracts",
-                  "type": "Volo.Abp.Account.SendPasswordResetCodeDto",
-                  "typeSimple": "Volo.Abp.Account.SendPasswordResetCodeDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "Volo.Abp.Account.SendPasswordResetCodeDto",
-                  "typeSimple": "Volo.Abp.Account.SendPasswordResetCodeDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Account.IAccountAppService"
-            },
-            "ResetPasswordAsyncByInput": {
-              "uniqueName": "ResetPasswordAsyncByInput",
-              "name": "ResetPasswordAsync",
-              "httpMethod": "POST",
-              "url": "api/account/reset-password",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Account.ResetPasswordDto, Volo.Abp.Account.Application.Contracts",
-                  "type": "Volo.Abp.Account.ResetPasswordDto",
-                  "typeSimple": "Volo.Abp.Account.ResetPasswordDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "Volo.Abp.Account.ResetPasswordDto",
-                  "typeSimple": "Volo.Abp.Account.ResetPasswordDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "System.Void",
-                "typeSimple": "System.Void"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Account.IAccountAppService"
-            }
-          }
-        },
-        "Volo.Abp.Account.ProfileController": {
-          "controllerName": "Profile",
-          "controllerGroupName": "Profile",
-          "isRemoteService": true,
-          "apiVersion": null,
-          "type": "Volo.Abp.Account.ProfileController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.Account.IProfileAppService"
+              "type": "Volo.Abp.SettingManagement.IEmailSettingsAppService"
             }
           ],
           "actions": {
@@ -3203,66 +3732,29 @@
               "uniqueName": "GetAsync",
               "name": "GetAsync",
               "httpMethod": "GET",
-              "url": "api/account/my-profile",
+              "url": "api/setting-management/emailing",
               "supportedVersions": [],
               "parametersOnMethod": [],
               "parameters": [],
               "returnValue": {
-                "type": "Volo.Abp.Account.ProfileDto",
-                "typeSimple": "Volo.Abp.Account.ProfileDto"
+                "type": "Volo.Abp.SettingManagement.EmailSettingsDto",
+                "typeSimple": "Volo.Abp.SettingManagement.EmailSettingsDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Account.IProfileAppService"
+              "implementFrom": "Volo.Abp.SettingManagement.IEmailSettingsAppService"
             },
             "UpdateAsyncByInput": {
               "uniqueName": "UpdateAsyncByInput",
               "name": "UpdateAsync",
-              "httpMethod": "PUT",
-              "url": "api/account/my-profile",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Account.UpdateProfileDto, Volo.Abp.Account.Application.Contracts",
-                  "type": "Volo.Abp.Account.UpdateProfileDto",
-                  "typeSimple": "Volo.Abp.Account.UpdateProfileDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "input",
-                  "jsonName": null,
-                  "type": "Volo.Abp.Account.UpdateProfileDto",
-                  "typeSimple": "Volo.Abp.Account.UpdateProfileDto",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "Body",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Account.ProfileDto",
-                "typeSimple": "Volo.Abp.Account.ProfileDto"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Account.IProfileAppService"
-            },
-            "ChangePasswordAsyncByInput": {
-              "uniqueName": "ChangePasswordAsyncByInput",
-              "name": "ChangePasswordAsync",
               "httpMethod": "POST",
-              "url": "api/account/my-profile/change-password",
+              "url": "api/setting-management/emailing",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "Volo.Abp.Account.ChangePasswordInput, Volo.Abp.Account.Application.Contracts",
-                  "type": "Volo.Abp.Account.ChangePasswordInput",
-                  "typeSimple": "Volo.Abp.Account.ChangePasswordInput",
+                  "typeAsString": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto, Volo.Abp.SettingManagement.Application.Contracts",
+                  "type": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto",
+                  "typeSimple": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -3272,8 +3764,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Volo.Abp.Account.ChangePasswordInput",
-                  "typeSimple": "Volo.Abp.Account.ChangePasswordInput",
+                  "type": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto",
+                  "typeSimple": "Volo.Abp.SettingManagement.UpdateEmailSettingsDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -3286,148 +3778,31 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Account.IProfileAppService"
-            }
-          }
-        }
-      }
-    },
-    "permissionManagement": {
-      "rootPath": "permissionManagement",
-      "remoteServiceName": "AbpPermissionManagement",
-      "controllers": {
-        "Volo.Abp.PermissionManagement.PermissionsController": {
-          "controllerName": "Permissions",
-          "controllerGroupName": "Permissions",
-          "isRemoteService": true,
-          "apiVersion": null,
-          "type": "Volo.Abp.PermissionManagement.PermissionsController",
-          "interfaces": [
-            {
-              "type": "Volo.Abp.PermissionManagement.IPermissionAppService"
-            }
-          ],
-          "actions": {
-            "GetAsyncByProviderNameAndProviderKey": {
-              "uniqueName": "GetAsyncByProviderNameAndProviderKey",
-              "name": "GetAsync",
-              "httpMethod": "GET",
-              "url": "api/permission-management/permissions",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "providerName",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "providerKey",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "providerName",
-                  "name": "providerName",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "providerKey",
-                  "name": "providerKey",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.PermissionManagement.GetPermissionListResultDto",
-                "typeSimple": "Volo.Abp.PermissionManagement.GetPermissionListResultDto"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.PermissionManagement.IPermissionAppService"
+              "implementFrom": "Volo.Abp.SettingManagement.IEmailSettingsAppService"
             },
-            "UpdateAsyncByProviderNameAndProviderKeyAndInput": {
-              "uniqueName": "UpdateAsyncByProviderNameAndProviderKeyAndInput",
-              "name": "UpdateAsync",
-              "httpMethod": "PUT",
-              "url": "api/permission-management/permissions",
+            "SendTestEmailAsyncByInput": {
+              "uniqueName": "SendTestEmailAsyncByInput",
+              "name": "SendTestEmailAsync",
+              "httpMethod": "POST",
+              "url": "api/setting-management/emailing/send-test-email",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
-                  "name": "providerName",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
-                  "name": "providerKey",
-                  "typeAsString": "System.String, System.Private.CoreLib",
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null
-                },
-                {
                   "name": "input",
-                  "typeAsString": "Volo.Abp.PermissionManagement.UpdatePermissionsDto, Volo.Abp.PermissionManagement.Application.Contracts",
-                  "type": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
-                  "typeSimple": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "typeAsString": "Volo.Abp.SettingManagement.SendTestEmailInput, Volo.Abp.SettingManagement.Application.Contracts",
+                  "type": "Volo.Abp.SettingManagement.SendTestEmailInput",
+                  "typeSimple": "Volo.Abp.SettingManagement.SendTestEmailInput",
                   "isOptional": false,
                   "defaultValue": null
                 }
               ],
               "parameters": [
                 {
-                  "nameOnMethod": "providerName",
-                  "name": "providerName",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
-                  "nameOnMethod": "providerKey",
-                  "name": "providerKey",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": ""
-                },
-                {
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
-                  "typeSimple": "Volo.Abp.PermissionManagement.UpdatePermissionsDto",
+                  "type": "Volo.Abp.SettingManagement.SendTestEmailInput",
+                  "typeSimple": "Volo.Abp.SettingManagement.SendTestEmailInput",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -3440,7 +3815,7 @@
                 "typeSimple": "System.Void"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.PermissionManagement.IPermissionAppService"
+              "implementFrom": "Volo.Abp.SettingManagement.IEmailSettingsAppService"
             }
           }
         }
@@ -9223,8 +9598,8 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Roles.RoleInListDto": {
-      "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Guid>",
+    "HolwnEcommerce.Admin.System.Users.UserInListDto": {
+      "baseType": "Volo.Abp.Application.Dtos.AuditedEntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
       "enumValues": null,
@@ -9243,10 +9618,116 @@
           "regex": null
         },
         {
-          "name": "Description",
+          "name": "Surname",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Email",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "UserName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PhoneNumber",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.AuditedEntityDto<T0>": {
+      "baseType": "Volo.Abp.Application.Dtos.CreationAuditedEntityDto<TPrimaryKey>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "TPrimaryKey"
+      ],
+      "properties": [
+        {
+          "name": "LastModificationTime",
+          "jsonName": null,
+          "type": "System.DateTime?",
+          "typeSimple": "string?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "LastModifierId",
+          "jsonName": null,
+          "type": "System.Guid?",
+          "typeSimple": "string?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Volo.Abp.Application.Dtos.CreationAuditedEntityDto<T0>": {
+      "baseType": "Volo.Abp.Application.Dtos.EntityDto<TPrimaryKey>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": [
+        "TPrimaryKey"
+      ],
+      "properties": [
+        {
+          "name": "CreationTime",
+          "jsonName": null,
+          "type": "System.DateTime",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "CreatorId",
+          "jsonName": null,
+          "type": "System.Guid?",
+          "typeSimple": "string?",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,
@@ -9308,7 +9789,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Roles.CreateUpdateRoleDto": {
+    "HolwnEcommerce.Admin.System.Users.CreateUserDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -9328,7 +9809,55 @@
           "regex": null
         },
         {
-          "name": "Description",
+          "name": "Surname",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Email",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "UserName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Password",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PhoneNumber",
           "jsonName": null,
           "type": "System.String",
           "typeSimple": "string",
@@ -9341,7 +9870,157 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Roles.RoleDto": {
+    "HolwnEcommerce.Admin.System.Users.UserDto": {
+      "baseType": "Volo.Abp.Application.Dtos.AuditedEntityDto<System.Guid>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "UserName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Email",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Surname",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PhoneNumber",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Roles",
+          "jsonName": null,
+          "type": "[System.String]",
+          "typeSimple": "[string]",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "IsActive",
+          "jsonName": null,
+          "type": "System.Boolean",
+          "typeSimple": "boolean",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "HolwnEcommerce.Admin.System.Users.UpdateUserDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Surname",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Email",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "PhoneNumber",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "HolwnEcommerce.Admin.System.Roles.RoleInListDto": {
       "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
@@ -9374,7 +10053,73 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Products.CreateUpdateProductDto": {
+    "HolwnEcommerce.Admin.System.Roles.CreateUpdateRoleDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Description",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "HolwnEcommerce.Admin.System.Roles.RoleDto": {
+      "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Guid>",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Description",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "HolwnEcommerce.Admin.Catalog.Products.CreateUpdateProductDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -9585,7 +10330,7 @@
       "genericArguments": null,
       "properties": null
     },
-    "HolwnEcommerce.Admin.Products.ProductDto": {
+    "HolwnEcommerce.Admin.Catalog.Products.ProductDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -9798,7 +10543,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Products.ProductInListDto": {
+    "HolwnEcommerce.Admin.Catalog.Products.ProductInListDto": {
       "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
@@ -9963,7 +10708,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Products.ProductListFilterDto": {
+    "HolwnEcommerce.Admin.Catalog.Products.ProductListFilterDto": {
       "baseType": "HolwnEcommerce.Admin.BaseListFilterDto",
       "isEnum": false,
       "enumNames": null,
@@ -9984,7 +10729,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Products.Attributes.AddUpdateProductAttributeDto": {
+    "HolwnEcommerce.Admin.Catalog.Products.Attributes.AddUpdateProductAttributeDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -10077,7 +10822,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeValueDto": {
+    "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeValueDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -10298,7 +11043,7 @@
       "genericArguments": null,
       "properties": null
     },
-    "HolwnEcommerce.Admin.Products.Attributes.ProductAttributeListFilterDto": {
+    "HolwnEcommerce.Admin.Catalog.Products.Attributes.ProductAttributeListFilterDto": {
       "baseType": "HolwnEcommerce.Admin.BaseListFilterDto",
       "isEnum": false,
       "enumNames": null,
@@ -10319,7 +11064,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.ProductCategories.ProductCategoryInListDto": {
+    "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryInListDto": {
       "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
@@ -10400,7 +11145,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.ProductCategories.CreateUpdateProductCategoryDto": {
+    "HolwnEcommerce.Admin.Catalog.ProductCategories.CreateUpdateProductCategoryDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -10517,7 +11262,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.ProductCategories.ProductCategoryDto": {
+    "HolwnEcommerce.Admin.Catalog.ProductCategories.ProductCategoryDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -10646,7 +11391,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.ProductAttributes.ProductAttributeInListDto": {
+    "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeInListDto": {
       "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
@@ -10751,7 +11496,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.ProductAttributes.CreateUpdateProductAttributeDto": {
+    "HolwnEcommerce.Admin.Catalog.ProductAttributes.CreateUpdateProductAttributeDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -10868,7 +11613,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.ProductAttributes.ProductAttributeDto": {
+    "HolwnEcommerce.Admin.Catalog.ProductAttributes.ProductAttributeDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -10997,7 +11742,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Manufacturers.ManufacturerInListDto": {
+    "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerInListDto": {
       "baseType": "Volo.Abp.Application.Dtos.EntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
@@ -11090,7 +11835,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Manufacturers.CreateUpdateManufacturerDto": {
+    "HolwnEcommerce.Admin.Catalog.Manufacturers.CreateUpdateManufacturerDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -11183,7 +11928,7 @@
         }
       ]
     },
-    "HolwnEcommerce.Admin.Manufacturers.ManufacturerDto": {
+    "HolwnEcommerce.Admin.Catalog.Manufacturers.ManufacturerDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,

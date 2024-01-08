@@ -23,15 +23,15 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Sản phẩm',
                 items: [
-                    { label: 'Danh sách sản phẩm', icon: 'pi pi-fw pi-box', routerLink: ['/product'] },
-                    { label: 'Danh sách thuộc tính', icon: 'pi pi-fw pi-box', routerLink: ['/attribute'] },
+                    { label: 'Danh sách sản phẩm', icon: 'pi pi-fw pi-box', routerLink: ['/catalog/product'] },
+                    { label: 'Danh sách thuộc tính', icon: 'pi pi-fw pi-box', routerLink: ['/catalog/attribute'] },
                 ]
             },
             {
                 label: 'Hệ thống',
                 items: [
-                    { label: 'Danh sách quyền', icon: 'pi pi-fw pi-box', routerLink: ['/role'] },
-                    { label: 'Danh sách người dùng', icon: 'pi pi-fw pi-box', routerLink: ['/user'] },
+                    { label: 'Danh sách quyền', icon: 'pi pi-fw pi-box', routerLink: ['/system/role'] },
+                    { label: 'Danh sách người dùng', icon: 'pi pi-fw pi-box', routerLink: ['/system/user'] },
                 ]
             },
         ];
