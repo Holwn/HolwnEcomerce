@@ -9,7 +9,7 @@ public class HolwnEcommerceAdminPermissionDefinitionProvider : PermissionDefinit
     public override void Define(IPermissionDefinitionContext context)
     {
         //Catalog
-        var catalogGroup = context.AddGroup(HolwnEcommerceAdminPermissions.CatalogGroupName);
+        var catalogGroup = context.AddGroup(HolwnEcommerceAdminPermissions.CatalogGroupName, L("Permission:HolwnEcomAdminCatalog"));
 
         //Add product
         var productPermission = catalogGroup.AddPermission(HolwnEcommerceAdminPermissions.Product.Default, L("Permission:HolwnEcomAdminCatalog.Product"));

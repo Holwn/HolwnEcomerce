@@ -1,6 +1,7 @@
 {
   "culture": "vi",
   "texts": {
+    "Permission:HolwnEcomAdminCatalog": "Danh mục",
     "Permission:HolwnEcomAdminCatalog.Product": "Sản phẩm",
     "Permission:HolwnEcomAdminCatalog.Product.Create": "Tạo mới sản phẩm",
     "Permission:HolwnEcomAdminCatalog.Product.Update": "Cập nhật sản phẩm",

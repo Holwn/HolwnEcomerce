@@ -1,6 +1,7 @@
 {
   "culture": "en",
   "texts": {
+    "Permission:HolwnEcomAdminCatalog": "HolwnEcomAdmin Catalog",
     "Permission:HolwnEcomAdminCatalog.Product": "Product",
     "Permission:HolwnEcomAdminCatalog.Product.Create": "Create product",
     "Permission:HolwnEcomAdminCatalog.Product.Update": "Update product",

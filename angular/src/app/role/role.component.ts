@@ -7,6 +7,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { MessageConstants } from '../shared/constants/messages.const';
 import { RoleDetailComponent } from './role-detail.component';
+import { PermissionGrantComponent } from './permission-grant.component';
 
 @Component({
   selector: 'app-role',
@@ -113,24 +114,24 @@ export class RoleComponent implements OnInit, OnDestroy {
       }
     });
   }
-  // showPermissionModal(id: string, name: string) {
-  //   const ref = this.dialogService.open(PermissionGrantComponent, {
-  //     data: {
-  //       id: id,
-  //       name: name,
-  //     },
-  //     header: name,
-  //     width: '70%',
-  //   });
+  showPermissionModal(id: string, name: string) {
+    const ref = this.dialogService.open(PermissionGrantComponent, {
+      data: {
+        id: id,
+        name: name,
+      },
+      header: name,
+      width: '70%',
+    });
 
-  //   ref.onClose.subscribe((data: RoleDto) => {
-  //     if (data) {
-  //       this.notificationService.showSuccess(MessageConstants.UPDATED_OK_MSG);
-  //       this.selectedItems = [];
-  //       this.loadData(data.id);
-  //     }
-  //   });
-  // }
+    ref.onClose.subscribe((data: RoleDto) => {
+      if (data) {
+        this.notificationService.showSuccess(MessageConstants.UPDATED_OK_MSG);
+        this.selectedItems = [];
+        this.loadData(data.id);
+      }
+    });
+  }
   deleteItems() {
     if (this.selectedItems.length == 0) {
       this.notificationService.showError(MessageConstants.NOT_CHOOSE_ANY_RECORD);
