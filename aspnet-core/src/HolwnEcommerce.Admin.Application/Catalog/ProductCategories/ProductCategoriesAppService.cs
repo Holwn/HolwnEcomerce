@@ -1,4 +1,5 @@
-﻿using HolwnEcommerce.ProductCategories;
+﻿using HolwnEcommerce.Admin.Permissions;
+using HolwnEcommerce.ProductCategories;
 using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using Volo.Abp.ObjectMapping;
 
 namespace HolwnEcommerce.Admin.Catalog.ProductCategories
 {
-    [Authorize]
+    [Authorize(HolwnEcommerceAdminPermissions.ProductCategory.Default, Policy = "AdminOnly")]
     public class ProductCategoriesAppService : CrudAppService
         <ProductCategory,
         ProductCategoryDto,
@@ -24,14 +25,21 @@ namespace HolwnEcommerce.Admin.Catalog.ProductCategories
         public ProductCategoriesAppService(IRepository<ProductCategory, Guid> repository)
             : base(repository)
         {
+            GetPolicyName = HolwnEcommerceAdminPermissions.ProductCategory.Default;
+            GetListPolicyName = HolwnEcommerceAdminPermissions.ProductCategory.Default;
+            CreatePolicyName = HolwnEcommerceAdminPermissions.ProductCategory.Create;
+            UpdatePolicyName = HolwnEcommerceAdminPermissions.ProductCategory.Update;
+            DeletePolicyName = HolwnEcommerceAdminPermissions.ProductCategory.Delete;
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.ProductCategory.Delete)]
         public async Task DeleteMultipleAsync(IEnumerable<Guid> ids)
         {
             await Repository.DeleteManyAsync(ids);
             await UnitOfWorkManager.Current.SaveChangesAsync();
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.ProductCategory.Default)]
         public async Task<List<ProductCategoryInListDto>> GetListAllAsync()
         {
             var query = await Repository.GetQueryableAsync();
@@ -41,6 +49,7 @@ namespace HolwnEcommerce.Admin.Catalog.ProductCategories
             return ObjectMapper.Map<List<ProductCategory>, List<ProductCategoryInListDto>>(data);
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.ProductCategory.Default)]
         public async Task<PagedResultDto<ProductCategoryInListDto>> GetListFilterAsync(BaseListFilterDto input)
         {
             var query = await Repository.GetQueryableAsync();

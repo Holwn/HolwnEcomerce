@@ -11,9 +11,12 @@ using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Identity;
 using Volo.Abp.Uow;
 using Volo.Abp;
+using Microsoft.AspNetCore.Authorization;
+using Polly;
 
 namespace HolwnEcommerce.Admin.System.Users
 {
+    [Authorize(IdentityPermissions.Users.Default, Policy = "AdminOnly")]
     public class UsersAppService : CrudAppService<IdentityUser, UserDto, Guid, PagedResultRequestDto,
                         CreateUserDto, UpdateUserDto>, IUsersAppService
     {
@@ -23,6 +26,12 @@ namespace HolwnEcommerce.Admin.System.Users
             IdentityUserManager identityUserManager) : base(repository)
         {
             _identityUserManager = identityUserManager;
+
+            GetPolicyName = IdentityPermissions.Users.Default;
+            GetListPolicyName = IdentityPermissions.Users.Default;
+            CreatePolicyName = IdentityPermissions.Users.Create;
+            UpdatePolicyName = IdentityPermissions.Users.Update;
+            DeletePolicyName = IdentityPermissions.Users.Delete;
         }
 
         public async Task DeleteMultipleAsync(IEnumerable<Guid> ids)

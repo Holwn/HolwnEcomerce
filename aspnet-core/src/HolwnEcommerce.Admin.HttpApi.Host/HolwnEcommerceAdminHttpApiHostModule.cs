@@ -123,6 +123,10 @@ public class HolwnEcommerceAdminHttpApiHostModule : AbpModule
                     ValidateIssuer = false
                 };
             });
+        context.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+        });
     }
 
     private static void ConfigureSwaggerServices(ServiceConfigurationContext context, IConfiguration configuration)

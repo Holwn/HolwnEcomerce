@@ -1,4 +1,5 @@
 ﻿using HolwnEcommerce.Admin.Catalog.Products.Attributes;
+using HolwnEcommerce.Admin.Permissions;
 using HolwnEcommerce.ProductAttributes;
 using HolwnEcommerce.ProductCategories;
 using HolwnEcommerce.Products;
@@ -16,7 +17,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace HolwnEcommerce.Admin.Catalog.Products
 {
-    [Authorize]
+    [Authorize(HolwnEcommerceAdminPermissions.Product.Default, Policy = "AdminOnly")]
     public class ProductsAppService : CrudAppService
         <Product,
         ProductDto,
@@ -58,8 +59,15 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             _productAttributeIntRepository = productAttributeIntRepository;
             _productAttributeTextRepository = productAttributeTextRepository;
             _productAttributeVarcharRepository = productAttributeVarcharRepository;
+
+            GetPolicyName = HolwnEcommerceAdminPermissions.Product.Default;
+            GetListPolicyName = HolwnEcommerceAdminPermissions.Product.Default;
+            CreatePolicyName = HolwnEcommerceAdminPermissions.Product.Create;
+            UpdatePolicyName = HolwnEcommerceAdminPermissions.Product.Update;
+            DeletePolicyName = HolwnEcommerceAdminPermissions.Product.Delete;
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Create)]
         public override async Task<ProductDto> CreateAsync(CreateUpdateProductDto input)
         {
             var product = await _productManager.CreateAsync(input.ManufacturerId, input.Name, input.Code, input.Slug, input.ProductType, input.SKU,
@@ -75,6 +83,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             return ObjectMapper.Map<Product, ProductDto>(result);
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Update)]
         public override async Task<ProductDto> UpdateAsync(Guid id, CreateUpdateProductDto input)
         {
             var product = await Repository.GetAsync(id);
@@ -110,12 +119,14 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             return ObjectMapper.Map<Product, ProductDto>(product);
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Delete)]
         public async Task DeleteMultipleAsync(IEnumerable<Guid> ids)
         {
             await Repository.DeleteManyAsync(ids);
             await UnitOfWorkManager.Current.SaveChangesAsync();
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Default)]
         public async Task<List<ProductInListDto>> GetListAllAsync()
         {
             var query = await Repository.GetQueryableAsync();
@@ -125,6 +136,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             return ObjectMapper.Map<List<Product>, List<ProductInListDto>>(data);
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Default)]
         public async Task<PagedResultDto<ProductInListDto>> GetListFilterAsync(ProductListFilterDto input)
         {
             var query = await Repository.GetQueryableAsync();
@@ -137,6 +149,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             return new PagedResultDto<ProductInListDto>(totalCount, ObjectMapper.Map<List<Product>, List<ProductInListDto>>(data));
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Update)]
         private async Task SaveThumbnailImageAsync(string fileName, string base64)
         {
             Regex regex = new Regex(@"^[\w/\:.-]+;base64,");
@@ -145,6 +158,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             await _fileContainer.SaveAsync(fileName, bytes, overrideExisting: true);
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Default)]
         public async Task<string> GetThumbnailImageAsync(string fileName)
         {
             if (string.IsNullOrEmpty(fileName))
@@ -166,6 +180,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             return await _productCodeGenerator.GenerateAsync();
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Update)]
         public async Task<ProductAttributeValueDto> AddProductAttributeAsync(AddUpdateProductAttributeDto input)
         {
             var product = await Repository.GetAsync(input.ProductId);
@@ -235,6 +250,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             };
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Update)]
         public async Task RemoveProductAttributeAsync(Guid attributeId, Guid id)
         {
             var attribute = await _productAttributeRepository.GetAsync(x => x.Id == attributeId);
@@ -287,6 +303,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             await UnitOfWorkManager.Current.SaveChangesAsync();
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Default)]
         public async Task<List<ProductAttributeValueDto>> GetListProductAttributeAllAsync(Guid productId)
         {
             var attributeQuery = await _productAttributeRepository.GetQueryableAsync();
@@ -335,6 +352,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             return await AsyncExecuter.ToListAsync(query);
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Default)]
         public async Task<PagedResultDto<ProductAttributeValueDto>> GetListProductAttributesAsync(ProductAttributeListFilterDto input)
         {
             var attributeQuery = await _productAttributeRepository.GetQueryableAsync();
@@ -385,6 +403,7 @@ namespace HolwnEcommerce.Admin.Catalog.Products
             return new PagedResultDto<ProductAttributeValueDto>(totalCount, data);
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Product.Update)]
         public async Task<ProductAttributeValueDto> UpdateProductAttributeAsync(Guid id, AddUpdateProductAttributeDto input)
         {
             var product = await Repository.GetAsync(input.ProductId);

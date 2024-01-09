@@ -1,4 +1,5 @@
-﻿using HolwnEcommerce.Manufacturers;
+﻿using HolwnEcommerce.Admin.Permissions;
+using HolwnEcommerce.Manufacturers;
 using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using Volo.Abp.ObjectMapping;
 
 namespace HolwnEcommerce.Admin.Catalog.Manufacturers
 {
-    [Authorize]
+    [Authorize(HolwnEcommerceAdminPermissions.Manufacturer.Default, Policy = "AdminOnly")]
     public class ManufacturersAppService : CrudAppService
         <Manufacturer,
         ManufacturerDto,
@@ -23,14 +24,21 @@ namespace HolwnEcommerce.Admin.Catalog.Manufacturers
         public ManufacturersAppService(IRepository<Manufacturer, Guid> repository)
             : base(repository)
         {
+            GetPolicyName = HolwnEcommerceAdminPermissions.Manufacturer.Default;
+            GetListPolicyName = HolwnEcommerceAdminPermissions.Manufacturer.Default;
+            CreatePolicyName = HolwnEcommerceAdminPermissions.Manufacturer.Create;
+            UpdatePolicyName = HolwnEcommerceAdminPermissions.Manufacturer.Update;
+            DeletePolicyName = HolwnEcommerceAdminPermissions.Manufacturer.Delete;
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Manufacturer.Delete)]
         public async Task DeleteMultipleAsync(IEnumerable<Guid> ids)
         {
             await Repository.DeleteManyAsync(ids);
             await UnitOfWorkManager.Current.SaveChangesAsync();
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Manufacturer.Default)]
         public async Task<List<ManufacturerInListDto>> GetListAllAsync()
         {
             var query = await Repository.GetQueryableAsync();
@@ -40,6 +48,7 @@ namespace HolwnEcommerce.Admin.Catalog.Manufacturers
             return ObjectMapper.Map<List<Manufacturer>, List<ManufacturerInListDto>>(data);
         }
 
+        [Authorize(HolwnEcommerceAdminPermissions.Manufacturer.Default)]
         public async Task<PagedResultDto<ManufacturerInListDto>> GetListFilterAsync(BaseListFilterDto input)
         {
             var query = await Repository.GetQueryableAsync();

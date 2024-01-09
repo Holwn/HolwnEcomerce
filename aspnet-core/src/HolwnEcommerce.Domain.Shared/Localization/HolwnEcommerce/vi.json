@@ -10,6 +10,14 @@
     "Permission:HolwnEcomAdminCatalog.Attribute": "Thuộc tính",
     "Permission:HolwnEcomAdminCatalog.Attribute.Create": "Tạo mới thuộc tính",
     "Permission:HolwnEcomAdminCatalog.Attribute.Update": "Cập nhật thuộc tính",
-    "Permission:HolwnEcomAdminCatalog.Attribute.Delete": "Xóa thuộc tính"
+    "Permission:HolwnEcomAdminCatalog.Attribute.Delete": "Xóa thuộc tính",
+    "Permission:HolwnEcomAdminCatalog.Manufacturer": "Nhà sản xuất",
+    "Permission:HolwnEcomAdminCatalog.Manufacturer.Create": "Tạo mới nhà sản xuất",
+    "Permission:HolwnEcomAdminCatalog.Manufacturer.Update": "Cập nhật nhà sản xuất",
+    "Permission:HolwnEcomAdminCatalog.Manufacturer.Delete": "Xóa nhà sản xuất",
+    "Permission:HolwnEcomAdminCatalog.ProductCategory": "Loại sản phẩm",
+    "Permission:HolwnEcomAdminCatalog.ProductCategory.Create": "Tạo mới loại sản phẩm",
+    "Permission:HolwnEcomAdminCatalog.ProductCategory.Update": "Cập nhật loại sản phẩm",
+    "Permission:HolwnEcomAdminCatalog.ProductCategory.Delete": "Xóa loại sản phẩm"
   }
 }
