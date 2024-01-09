@@ -1,4 +1,4 @@
-import type { CreateUserDto, UpdateUserDto, UserDto, UserInListDto } from './models';
+import type { CreateUserDto, SetPasswordDto, UpdateUserDto, UserDto, UserInListDto } from './models';
 import { RestService } from '@abp/ng.core';
 import type { PagedResultDto, PagedResultRequestDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
@@ -77,6 +77,15 @@ export class UsersService {
       method: 'GET',
       url: '/api/app/users/with-filter',
       params: { keyword: input.keyword, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+    },
+    { apiName: this.apiName });
+  
+
+  setPassword = (userId: string, input: SetPasswordDto) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: `/api/app/users/set-password/${userId}`,
+      body: input,
     },
     { apiName: this.apiName });
   
