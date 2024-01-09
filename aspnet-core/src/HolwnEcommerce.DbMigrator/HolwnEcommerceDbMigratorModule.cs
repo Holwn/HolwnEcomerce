@@ -1,4 +1,5 @@
-﻿using HolwnEcommerce.EntityFrameworkCore;
+﻿using HolwnEcommerce.Admin;
+using HolwnEcommerce.EntityFrameworkCore;
 using Volo.Abp.Autofac;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Modularity;
@@ -8,7 +9,7 @@ namespace HolwnEcommerce.DbMigrator;
 [DependsOn(
     typeof(AbpAutofacModule),
     typeof(HolwnEcommerceEntityFrameworkCoreModule),
-    typeof(HolwnEcommerceApplicationContractsModule)
+    typeof(HolwnEcommerceAdminApplicationContractsModule)
     )]
 public class HolwnEcommerceDbMigratorModule : AbpModule
 {
