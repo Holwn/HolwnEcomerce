@@ -7,6 +7,7 @@ import { MessageConstants } from 'src/app/shared/constants/messages.const';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { UserDetailComponent } from './user-detail.component';
 import { UserDto, UserInListDto, UsersService } from '@proxy/system/users';
+import { RoleAssignComponent } from './role-assign.component';
 
 @Component({
   selector: 'app-user',
@@ -163,22 +164,22 @@ export class UserComponent implements OnInit, OnDestroy {
   //   });
   // }
   
-  // assignRole(id: string) {
-  //   const ref = this.dialogService.open(RoleAssignComponent, {
-  //     data: {
-  //       id: id,
-  //     },
-  //     header: 'Gán quyền',
-  //     width: '70%',
-  //   });
+  assignRole(id: string) {
+    const ref = this.dialogService.open(RoleAssignComponent, {
+      data: {
+        id: id,
+      },
+      header: 'Gán quyền',
+      width: '70%',
+    });
 
-  //   ref.onClose.subscribe((result: boolean) => {
-  //     if (result) {
-  //       this.notificationService.showSuccess(MessageConstants.ROLE_ASSIGN_SUCCESS_MSG);
-  //       this.loadData();
-  //     }
-  //   });
-  // }
+    ref.onClose.subscribe((result: boolean) => {
+      if (result) {
+        this.notificationService.showSuccess(MessageConstants.ROLE_ASSIGN_SUCCESS_MSG);
+        this.loadData();
+      }
+    });
+  }
 
   private toggleBlockUI(enabled: boolean) {
     if (enabled == true) {
