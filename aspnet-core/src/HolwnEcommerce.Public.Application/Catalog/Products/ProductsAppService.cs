@@ -56,16 +56,24 @@ namespace HolwnEcommerce.Public.Catalog.Products
             return ObjectMapper.Map<List<Product>, List<ProductInListDto>>(data);
         }
 
-        public async Task<PagedResultDto<ProductInListDto>> GetListFilterAsync(ProductListFilterDto input)
+        public async Task<PagedResult<ProductInListDto>> GetListFilterAsync(ProductListFilterDto input)
         {
             var query = await Repository.GetQueryableAsync();
             query = query.WhereIf(!string.IsNullOrWhiteSpace(input.Keyword), x => x.Name.Contains(input.Keyword));
             query = query.WhereIf(input.CategoryId.HasValue, x => x.CategoryId == input.CategoryId);
 
             var totalCount = await AsyncExecuter.LongCountAsync(query);
-            var data = await AsyncExecuter.ToListAsync(query.OrderByDescending(x => x.CreationTime).Skip(input.SkipCount).Take(input.MaxResultCount));
+            var data = await AsyncExecuter
+               .ToListAsync(
+                  query.Skip((input.CurrentPage - 1) * input.PageSize)
+               .Take(input.PageSize));
 
-            return new PagedResultDto<ProductInListDto>(totalCount, ObjectMapper.Map<List<Product>, List<ProductInListDto>>(data));
+            return new PagedResult<ProductInListDto>(
+                ObjectMapper.Map<List<Product>, List<ProductInListDto>>(data),
+                totalCount,
+                input.CurrentPage,
+                input.PageSize
+            );
         }
 
         public async Task<string> GetThumbnailImageAsync(string fileName)
@@ -132,7 +140,7 @@ namespace HolwnEcommerce.Public.Catalog.Products
             return await AsyncExecuter.ToListAsync(query);
         }
 
-        public async Task<PagedResultDto<ProductAttributeValueDto>> GetListProductAttributesAsync(ProductAttributeListFilterDto input)
+        public async Task<PagedResult<ProductAttributeValueDto>> GetListProductAttributesAsync(ProductAttributeListFilterDto input)
         {
             var attributeQuery = await _productAttributeRepository.GetQueryableAsync();
 
@@ -178,8 +186,16 @@ namespace HolwnEcommerce.Public.Catalog.Products
                         };
             query = query.Where(x => x.DateTimeId != null || x.DecimalId != null || x.IntId != null || x.VarcharId != null || x.TextId != null);
             var totalCount = await AsyncExecuter.LongCountAsync(query);
-            var data = await AsyncExecuter.ToListAsync(query.OrderByDescending(x => x.Label).Skip(input.SkipCount).Take(input.MaxResultCount));
-            return new PagedResultDto<ProductAttributeValueDto>(totalCount, data);
+            var data = await AsyncExecuter
+               .ToListAsync(
+                  query.OrderByDescending(x => x.Label).Skip((input.CurrentPage - 1) * input.PageSize)
+               .Take(input.PageSize));
+
+            return new PagedResult<ProductAttributeValueDto>(data,
+                totalCount,
+                input.CurrentPage,
+                input.PageSize
+            );
         }
 
         public async Task<List<ProductInListDto>> GetListTopSellerAsync(int numberOfRecords)
