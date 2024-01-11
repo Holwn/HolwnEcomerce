@@ -5,6 +5,7 @@ using HolwnEcommerce.Public.Catalog.Products.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -179,6 +180,17 @@ namespace HolwnEcommerce.Public.Catalog.Products
             var totalCount = await AsyncExecuter.LongCountAsync(query);
             var data = await AsyncExecuter.ToListAsync(query.OrderByDescending(x => x.Label).Skip(input.SkipCount).Take(input.MaxResultCount));
             return new PagedResultDto<ProductAttributeValueDto>(totalCount, data);
+        }
+
+        public async Task<List<ProductInListDto>> GetListTopSellerAsync(int numberOfRecords)
+        {
+            var query = await Repository.GetQueryableAsync();
+            query = query.Where(x => x.IsActive == true)
+                .OrderByDescending(x=>x.CreationTime)
+                .Take(numberOfRecords);
+            var data = await AsyncExecuter.ToListAsync(query);
+
+            return ObjectMapper.Map<List<Product>, List<ProductInListDto>>(data);
         }
     }
 }
