@@ -1,4 +1,5 @@
-﻿using HolwnEcommerce.Public.Catalog.Products.Attributes;
+﻿using HolwnEcommerce.Public.Catalog.ProductCategories;
+using HolwnEcommerce.Public.Catalog.Products.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,5 +20,6 @@ namespace HolwnEcommerce.Public.Catalog.Products
         Task<PagedResult<ProductAttributeValueDto>> GetListProductAttributesAsync(ProductAttributeListFilterDto input);
 
         Task<List<ProductInListDto>> GetListTopSellerAsync(int numberOfRecords);
+        Task<ProductDto> GetBySlugAsync(string slug);
     }
 }

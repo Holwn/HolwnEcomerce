@@ -37,7 +37,7 @@ public class HolwnEcommercePublicApplicationModule : AbpModule
             {
                 container.UseFileSystem(fileSystem =>
                 {
-                    fileSystem.BasePath = "C:\\my-files";
+                    fileSystem.BasePath = "C:\\holwn-ecommerce";
                 });
             });
         });

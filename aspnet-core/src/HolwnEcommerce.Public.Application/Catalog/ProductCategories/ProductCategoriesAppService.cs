@@ -15,18 +15,24 @@ namespace HolwnEcommerce.Public.Catalog.ProductCategories
         Guid,
         PagedResultRequestDto>, IProductCategoriesAppService
     {
-        private readonly IRepository<ProductCategory, Guid> _productCategoriesAppService;
+        private readonly IRepository<ProductCategory, Guid> _productCategoryRepository;
         public ProductCategoriesAppService(IRepository<ProductCategory, Guid> repository)
             : base(repository)
         {
-            _productCategoriesAppService = repository;
+            _productCategoryRepository = repository;
         }
 
         public async Task<ProductCategoryDto> GetByCodeAsync(string code)
         {
-            var category = await _productCategoriesAppService.GetAsync(x => x.Code == code);
+            var category = await _productCategoryRepository.GetAsync(x => x.Code == code);
 
             return ObjectMapper.Map<ProductCategory, ProductCategoryDto>(category);
+        }
+
+        public async Task<ProductCategoryDto> GetBySlugAsync(string slug)
+        {
+            var productCategory = await _productCategoryRepository.GetAsync(x => x.Slug == slug);
+            return ObjectMapper.Map<ProductCategory, ProductCategoryDto>(productCategory);
         }
 
         public async Task<List<ProductCategoryInListDto>> GetListAllAsync()
