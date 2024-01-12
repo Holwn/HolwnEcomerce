@@ -104,6 +104,10 @@ public class PublicWebModule : AbpModule
         ConfigureNavigationServices();
         ConfigureAutoApiControllers();
         ConfigureSwaggerServices(context.Services);
+
+        context.Services.AddSession(options => {
+            options.IdleTimeout = TimeSpan.FromMinutes(30);
+        });
     }
 
     private void ConfigureAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
@@ -260,6 +264,7 @@ public class PublicWebModule : AbpModule
             app.UseErrorPage();
         }
 
+        app.UseSession();
         app.UseCorrelationId();
         app.UseStaticFiles();
         app.UseRouting();
