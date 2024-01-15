@@ -62,12 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="wishlist-action">
-                                        <h4 class="color-brand-3">
-                                            @{
-                                                var totalLine = (Model.CartItems[i].Product.SellPrice * Model.CartItems[i].Quantity);
-                                            }
-                                            @totalLine
-                                        </h4>
+                                        <h4 class="color-brand-3">@(Model.CartItems[i].Product.SellPrice * Model.CartItems[i].Quantity)</h4>
                                     </div>
                                     <div class="wishlist-remove"><a class="btn btn-delete" href="#"></a></div>
                                 </div>
