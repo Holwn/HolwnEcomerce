@@ -21,7 +21,7 @@ namespace HolwnEcommerce.Emailing
             var passSetting = context.GetOrNull("Abp.Mailing.Smtp.Password");
             if (passSetting != null)
             {
-                string debug = encryptionService.Encrypt(passSetting, "78bd09a6bd4a86468cd98e1e658185d9-4c955d28-32099d6b");
+                string debug = encryptionService.Encrypt(passSetting, "<encrypted-credential-password>");
             }
 
         }
