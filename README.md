@@ -1,28 +1,29 @@
-﻿# Holwn Ecommerce solution using ABP Framework + Angular
+﻿# Holwn Ecommerce solution using ABP Framework + Angular 
 
-# Deploy System using Abp Framework
+## Setup Developmenent Environment on Windows
 
-## Installation on Windows
-
-1. Install SQL Server: https://phoenixnap.com/kb/sql-server-linux
+1. Install SQL Server: https://www.microsoft.com/en-us/sql-server/sql-server-downloads
 2. Install Redis: https://redis.io/docs/getting-started/installation/install-redis-on-windows/
 3. Visual Studio 2022
-4. .NET Core 6.0
+4. .NET Corre SDK 6.0
 5. Redis management tool: https://goanother.com/
+6. Visual Studio Code
+7. NodeJS
 
 ## Running source code Step by step on Visual Studio
-- Add a new user with all privilege: teduecom and <password>
-- Choose default Project: HolwnEcommerce.Migrator
-- Update-Database -Context HolwnEcommerceDbContext
-- Set Startup Project HolwnEcommerce.Migrator and press F5
+- Open Project Solution
+- Set Startup Project: HolwnEcommerce.Migrator
+- Open Package Manager Console windows
+- Set Default Project HolwnEcommerce.EntityFrameworkCore
+- Run command: Update-Database -Context HolwnEcommerceDbContext
 - Install global tool: dotnet tool install -g Volo.Abp.Cli
-- Change directory to: HolwnEcommerce.AuthServer and run abp install-libs
-- Set startup project: HolwnEcommerce.Admin.HttpApi.Host
+- Run command on folder: HolwnEcommerce.AuthServer and run abp install-libs
+- Set startup project: HolwnEcommerce.Admin.HttpApi.Host or set multiple startup projects
 
-## Deployment to CentOS and NGINX
+## Deployment to CentOS and NGINX (Example: AuthServer)
 
 ### Step 1:  Add .NET Product feed to the system
-
+- Add .NET Source
 ```
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[packages-microsoft-com-prod]\nname=packages-microsoft-com-prod \nbaseurl= https://packages.microsoft.com/yumrepos/microsoft-rhel7.3-prod\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/dotnetdev.repo'
@@ -37,8 +38,8 @@ sudo yum install dotnet-sdk-6.0
 sudo yum install aspnetcore-runtime-6.0
 ```
 
-### Step 3: Install Redis
-- Install Redis on CentOs:
+### Step 3: Install Redis Cache
+
 ```
 sudo yum install redis -y
 sudo systemctl start redis.service
@@ -46,26 +47,22 @@ sudo systemctl enable redis
 sudo systemctl status redis.service
 ```
 
-### Step 4: Install SQL Server
+### Step 4: Install SQL Server on Linux
 ```
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2019.repo
 sudo yum makecache
-sudo yum install -y mssql-server
+sudo yum install -y mssql-server mssql-tools unixODBC-devel
 rpm -qi mssql-server
 sudo /opt/mssql/bin/mssql-conf setup
 sudo systemctl status sqlserver.service
 sudo  firewall-cmd --add-port=1433/tcp --permanent
-sudo  firewall-cmd --add-port=1431/tcp --permanent
 sudo  firewall-cmd --reload
 
 ```
 - Fill password system: Abcd@123$
-- Install tools:
-```
-yum -y install mssql-tools unixODBC-devel
-```
 - Run command: sqlcmd -S localhost -U sa
 - Fill passsword
+- Try a command: select * from sys.database and type 'go'
 
 ### Step 5: Install NGINX Server
 ```
@@ -75,16 +72,18 @@ sudo systemctl enable nginx
 sudo systemctl status nginx.service
 sudo systemctl reload nginx
 ```
-- Go to /etc/nginx/config.d
-- Create a new file teduecom_admin_api.conf
-- Populate file content:
+
+### Step 6: Create new NGINX configuration:
+1. Go to /etc/nginx/config.d folder
+2. Create a new file holwnecom_auth_server.conf
+3. Populate file content:
 ```
 map $http_x_forwarded_for $real_ip {
         ~^(\d+\.\d+\.\d+\.\d+) $1;
         default $remote_addr;
     }
 server {
-  listen <port>;
+  listen 25000;
   server_name _;
   client_max_body_size 100M;
   location / {
@@ -104,70 +103,65 @@ server {
     }
 }
 ```
+4. Reload NGINX
+```
+sudo systemctl reload nginx
+```
 
-### Step 6: Deploy and configure ASP.NET Core application
-- Create a new service and folder
+### Step 7: Deploy and configure ASP.NET Core application
+- Create a new service and folder /home/vhost/www
 ```
 cd /home/vhost/www
-sudo chown nginx:nginx -R /home/vhost/www/teduecom_auth_server
-sudo vi /etc/systemd/system/teduecom_auth_server.service
+sudo chown nginx:nginx -R /home/vhost/www/holwnecom_auth_server
+sudo vi /etc/systemd/system/holwnecom_auth_server.service
 ```
-- Edit file teduecom_admin_api.service:
+- Upload file
+
+### Step 8: Create new Linux Service
+- Edit file holwnecom_auth_server.service.conf:
 ```
 [Unit]
-Description=TEDU Admin API
+Description=Holwn Auth Server
 
 [Service]
-WorkingDirectory=/home/vhost/www/teduecom_admin_api
-ExecStart=/usr/bin/dotnet /home/vhost/www/teduecom_admin_api/HolwnEcommerce.Admin.HttpApi.Host.dll
+WorkingDirectory=/home/vhost/www/holwnecom_auth_server
+ExecStart=/usr/bin/dotnet /home/vhost/www/holwnecom_auth_server/holwnEcommerce.AuthServer.dll  --urls http://localhost:5000
 Restart=always
 RestartSec=20 # Restart service after 10 seconds if dotnet service crashes
-SyslogIdentifier=dotnet-teduecom_admin_api
+SyslogIdentifier=dotnet-holwnecom_admin_api
 User=nginx
 Environment=ASPNETCORE_ENVIRONMENT=Production
 
 [Install]
 WantedBy=multi-user.target
 ```
+
 - Start service:
 ```
-sudo systemctl start teduecom_admin_api
-sudo systemctl enable teduecom_admin_api.service
-sudo systemctl status teduecom_admin_api
-sudo systemctl restart teduecom_admin_api
-
+sudo systemctl start holwnecom_auth_server
+sudo systemctl enable holwnecom_auth_server.service
+sudo systemctl status holwnecom_auth_server
 ```
-- Disable Selinux: Tắt tính năng chặn truy cập trong Linux
-- Lưu và thoát: :wq
+- Change service config:
 ```
-sudo vi /etc/sysconfig/selinux
+systemctl daemon-reload
+sudo systemctl restart holwnecom_auth_server
 ```
-- Find SELINUX=enforcing and replace it with SELINUX=disabled
-- Reboot system
+- List all servcies with holwnecom prefix:
 ```
-sudo reboot
-```
-- List all servcies with teduecom prefix:
-```
-systemctl | grep teduecom
-
-```
-
-### Step 7: Restart service when change config
-- Update code need restart
-```
- sudo systemctl restart teduecom_admin_api
+systemctl | grep holwnecom
 ```
 
 
-### Step 8: Setup firewall to allow 80 and 443
+### Step 9: Setup firewall to allow 80 and 443
 ```
 sudo firewall-cmd --zone=public --permanent --add-service=http
 sudo firewall-cmd --zone=public --permanent --add-service=https
 sudo firewall-cmd --reload
 sudo systemctl enable firewalld.service
 ```
-### Step 9: Run with public IP
+
+### Step 10: Run with public IP
 
 ## Note:
 - Run add or remove IP in CentOS
@@ -175,4 +169,21 @@ sudo systemctl enable firewalld.service
 firewall-cmd --permanent --zone=public --add-port=25000/tcp
 firewall-cmd --zone=public --list-ports
 sudo firewall-cmd --reload
+firewall-cmd --permanent --zone=public --remove-port=1431/tcp
+```
+
+- Update code need restart
+```
+ sudo systemctl restart holwnecom_auth_server
+```
+
+- Disable Selinux: Turn off access management in Linux
+```
+sudo vi /etc/sysconfig/selinux
+```
+- Find SELINUX=enforcing and replace it with SELINUX=disabled
+- Save file: Press ESC and type :w and :q to save and quit.
+- Reboot system
+```
+sudo reboot
 ```
