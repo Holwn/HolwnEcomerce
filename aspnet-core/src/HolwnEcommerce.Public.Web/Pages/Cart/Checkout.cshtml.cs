@@ -1,4 +1,4 @@
-﻿using HolwnEcommerce.Emailing;
+﻿using HolwnEcommerce.Orders.Events;
 using HolwnEcommerce.Public.Orders;
 using HolwnEcommerce.Public.Web.Extensions;
 using HolwnEcommerce.Public.Web.Models;
@@ -10,29 +10,28 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Volo.Abp.Emailing;
-using Volo.Abp.TextTemplating;
+using Volo.Abp.EventBus.Local;
 
 namespace HolwnEcommerce.Public.Web.Pages.Cart
 {
     public class CheckoutModel : PageModel
     {
         private readonly IOrdersAppService _ordersAppService;
-        private readonly IEmailSender _emailSender;
-        private readonly ITemplateRenderer _templateRenderer;
+        private readonly ILocalEventBus _localEventBus;
+
         public CheckoutModel(IOrdersAppService ordersAppService,
-            IEmailSender emailSender,
-            ITemplateRenderer templateRenderer)
+            ILocalEventBus localEventBus)
         {
             _ordersAppService = ordersAppService;
-            _emailSender = emailSender;
-            _templateRenderer = templateRenderer;
+            _localEventBus = localEventBus;
         }
+
         public List<CartItem> CartItems { get; set; }
         public bool? CreateStatus { get; set; }
 
         [BindProperty]
         public OrderDto Order { get; set; }
+
         public void OnGet()
         {
             CartItems = GetCartItems();
@@ -42,10 +41,9 @@ namespace HolwnEcommerce.Public.Web.Pages.Cart
         {
             if (ModelState.IsValid == false)
             {
-
             }
             var cartItems = new List<OrderItemDto>();
-            foreach(var item in GetCartItems())
+            foreach (var item in GetCartItems())
             {
                 cartItems.Add(new OrderItemDto
                 {
@@ -66,17 +64,15 @@ namespace HolwnEcommerce.Public.Web.Pages.Cart
             CartItems = GetCartItems();
             if (order != null)
             {
-                //if (User.Identity.IsAuthenticated)
-                //{
-                //    var email = User.GetSpecificClaim(ClaimTypes.Email);
-                //    var emailBody = await _templateRenderer.RenderAsync(
-                //        EmailTemplates.CreateOrderEmail,
-                //        new
-                //        {
-                //            message = "Create order success"
-                //        });
-                //    await _emailSender.SendAsync(email, "Tạo đơn hàng thành công", emailBody);
-                //}
+                if (User.Identity.IsAuthenticated)
+                {
+                    var email = User.GetSpecificClaim(ClaimTypes.Email);
+                    await _localEventBus.PublishAsync(new NewOrderCreatedEvent()
+                    {
+                        CustomerEmail = email,
+                        Message = "Create order success"
+                    });
+                }
                 CreateStatus = true;
             }
             else
